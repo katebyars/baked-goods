@@ -13,8 +13,8 @@ public interface CartDao {
     //create
     void add(Cart cart);
 
-//    //read
-//    List<Cart> getAllCarts();
+    //read
+    List<Cart> getAllCarts();
 //    Cart findById(int id);
 //    Cart findByBuyer(int buyerId);
 //

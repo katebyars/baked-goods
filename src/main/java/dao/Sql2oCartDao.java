@@ -28,14 +28,14 @@ public class Sql2oCartDao implements CartDao {
         }
     }
 
-//    @Override
-//    public List<Cart> getAllCarts() {
-//        try(Connection con = sql2o.open()){
-//            return con.createQuery("SELECT * FROM carts")
-//                    .executeAndFetch(Cart.class);
-//        }
-//
-//    }
+    @Override
+    public List<Cart> getAllCarts() {
+        try(Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM carts")
+                    .executeAndFetch(Cart.class);
+        }
+
+    }
 //
 //    @Override
 //    public Cart findById(int id) {

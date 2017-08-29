@@ -32,18 +32,18 @@ public class Sql2oCartDaoTest {
     }
 
     @Test
-    public void addLanguageAddsInstanceOfLanguage_True() throws Exception {
+    public void addACart_True() throws Exception {
         Cart testCart = setUpCart();
         assertTrue(testCart instanceof Cart);
     }
 
-//    @Test
-//    public void addLanguageAddsALanguageToDao_True() throws Exception {
-//        Cart testCart = setUpCart();
-//        cartDao.add(testCart);
-//        assertEquals(1,cartDao.getAllCarts().size());
-//    }
-//
+    @Test
+    public void addACartToDao_True() throws Exception {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        assertEquals(1,cartDao.getAllCarts().size());
+    }
+
 //    @Test
 //    public void addLanguageSetsId() throws Exception {
 //        Cart testCart = setUpCart();
