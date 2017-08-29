@@ -19,7 +19,7 @@ public interface CartDao {
 //    Cart findByBuyer(int buyerId);
 //
 //    //update
-//    void update(int id, double cartTotal);
+    void updateCart(int id, double cartTotal);
 //
 //    //delete
 //    void deleteById(int id); //see above

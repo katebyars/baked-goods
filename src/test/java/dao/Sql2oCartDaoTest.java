@@ -72,15 +72,14 @@ public class Sql2oCartDaoTest {
         assertEquals(13.12, cartDao.findById(2).getCartTotal(), .01);
     }
 
-//    @Test
-//    public void updateChangesName() {
-//        Cart testCart = setUpCart();
-//        cartDao.add(testCart);
-////        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
-//        cartDao.update(1, 0);
-//        assertEquals(0, cartDao.findById(1).getCartTotal());
-//    }
-//
+    @Test
+    public void updateCartChangesTotal() {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        cartDao.updateCart(1, 15.01);
+        assertEquals(15.01, cartDao.findById(1).getCartTotal(), .01);
+    }
+
 //    @Test
 //    public void deleteALanguageFromTheDao_True() {
 //        Cart testCart = setUpCart();

@@ -46,19 +46,19 @@ public class Sql2oCartDao implements CartDao {
         }
 
     }
-//
-//    @Override
-//    public void update(int id, double cartTotal){
-//        String sql = "UPDATE carts SET cartTotal = :cartTotal WHERE id=:id";
-//        try(Connection con = sql2o.open()){
-//            con.createQuery(sql)
-//                    .addParameter("cartTotal", cartTotal)
-//                    .addParameter("id", id)
-//                    .executeUpdate();
-//        } catch (Sql2oException ex) {
-//            System.out.println(ex);
-//        }
-//    }
+
+    @Override
+    public void updateCart(int id, double cartTotal){
+        String sql = "UPDATE carts SET cartTotal = :cartTotal WHERE id=:id";
+        try(Connection con = sql2o.open()){
+            con.createQuery(sql)
+                    .addParameter("cartTotal", cartTotal)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex) {
+            System.out.println(ex);
+        }
+    }
 //
 //    @Override
 //    public void deleteById(int id) {
