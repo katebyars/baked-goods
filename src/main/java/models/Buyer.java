@@ -10,6 +10,7 @@
 //    private String dietaryPreference;
 //    private String emailAddress;
 //    private int id;
+//    private int cartId;
 //
 //
 //    public Buyer(String name, String deliveryAddress, String dietaryPreference, String emailAddress, List cartItems, double cartTotal) {
@@ -26,6 +27,13 @@
 //
 //    public void setName(String name) {
 //        this.name = name;
+//    }
+//    public String getCartId() {
+//        return cartId;
+//    }
+//
+//    public void setCartId(int cartId) {
+//        this.cartId = cartId;
 //    }
 //
 //    public String getDeliveryAddress() {
