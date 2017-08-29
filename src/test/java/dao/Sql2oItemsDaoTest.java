@@ -69,7 +69,7 @@ public class Sql2oItemsDaoTest {
         Items testItem2 = new Items("Milk Duds", "Cinema Treats", 5.00);
         itemsDao.add(testItem);
         itemsDao.add(testItem2);
-        assertEquals("Milk Duds", itemsDao.findById(1).getItemName());
+        assertEquals("Milk Duds", itemsDao.findById(2).getItemName());
     }
 
     @Test
@@ -77,7 +77,7 @@ public class Sql2oItemsDaoTest {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         itemsDao.update(1, "Milk Duds", "Cinema Treats", 5.00);
-        assertEquals("Italian", itemsDao.findById(1).getItemName());
+        assertEquals("Milk Duds", itemsDao.findById(1).getItemName());
     }
 
     @Test
