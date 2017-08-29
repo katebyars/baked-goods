@@ -1,5 +1,5 @@
 package dao;
-import com.sun.tools.javac.util.List;
+import java.util.List;
 import models.Items;
 
 public interface ItemsDao {
@@ -8,7 +8,7 @@ public interface ItemsDao {
     void add(Items item);
 
     //read
-    List<Items>getAllItems();
+    List<Items> getAllItems();
     Items findById(int id);
 
     //update

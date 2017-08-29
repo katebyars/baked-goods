@@ -28,7 +28,7 @@ public class Sql2oItemsDao implements ItemsDao {
     }
 
     @Override
-    public List<Items>getAllItems(){
+    public List<Items> getAllItems(){
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM items")
                     .executeAndFetch(Items.class);
