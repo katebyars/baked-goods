@@ -10,6 +10,7 @@ public class Seller extends Cart {
     private String email;
     private String goodsCategory;
     private List<Items> goodsInventory;
+    private int id;
 
     public Seller(List cartItems, double cartTotal, String name, String address, String email, String goodsCategory) {
         super(cartItems, cartTotal);

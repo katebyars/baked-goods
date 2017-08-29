@@ -9,6 +9,7 @@ public class Buyer extends Cart {
     private String deliveryAddress;
     private String dietaryPreference;
     private String emailAddress;
+    private int id;
 
 
     public Buyer(String name, String deliveryAddress, String dietaryPreference, String emailAddress, List cartItems, double cartTotal) {

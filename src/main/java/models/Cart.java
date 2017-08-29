@@ -6,8 +6,9 @@ public class Cart {
 
     private List<Items> cartItems;
     private double cartTotal;
+    private int id;
 
-    public Cart(List<Items> cartItems, double cartTotal) {
+    public Cart(double cartTotal) {
         this.cartItems = cartItems;
         this.cartTotal = 0;
     }
@@ -26,6 +27,14 @@ public class Cart {
 
     public void setCartTotal(double cartTotal) {
         this.cartTotal = cartTotal;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

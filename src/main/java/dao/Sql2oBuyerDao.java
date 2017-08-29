@@ -84,6 +84,4 @@ public class Sql2oBuyerDao implements BuyerDao {
 //        }
 //    }
 
-
-
 }
