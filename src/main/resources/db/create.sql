@@ -12,11 +12,6 @@ CREATE TABLE IF NOT EXISTS carts (
  cartTotal DOUBLE
 );
 
---CREATE TABLE IF NOT EXISTS buyers (
--- id int PRIMARY KEY auto_increment,
---);
---
---
 CREATE TABLE IF NOT EXISTS sellers (
  id int PRIMARY KEY auto_increment,
  cartTotal DOUBLE,
@@ -25,3 +20,10 @@ CREATE TABLE IF NOT EXISTS sellers (
  email VARCHAR,
  goodsCategory VARCHAR
 );
+
+
+--CREATE TABLE IF NOT EXISTS buyers (
+-- id int PRIMARY KEY auto_increment,
+--);
+--
+--
