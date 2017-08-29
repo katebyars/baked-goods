@@ -72,16 +72,16 @@ public class Sql2oCartDao implements CartDao {
         }
 
     }
-//
-//    @Override
-//    public void deleteAll() {
-//        String sql = "DELETE from carts";
-//        try (Connection con = sql2o.open()) {
-//            con.createQuery(sql)
-//                    .executeUpdate();
-//        } catch (Sql2oException ex){
-//            System.out.println(ex);
-//        }
-//    }
+
+    @Override
+    public void deleteAll() {
+        String sql = "DELETE from carts";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
 
 }

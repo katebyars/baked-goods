@@ -89,13 +89,13 @@ public class Sql2oCartDaoTest {
         assertEquals(0, cartDao.getAllCarts().size());
     }
 
-//    @Test
-//    public void deleteAllLanguages() {
-//        Cart testCart = setUpCart();
-//        cartDao.add(testCart);
-//        assertEquals(1, cartDao.getAllCarts().size());
-//        cartDao.deleteAll();
-//        assertEquals(0, cartDao.getAllCarts().size());
-//    }
+    @Test
+    public void deleteAllCarts() {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        assertEquals(1, cartDao.getAllCarts().size());
+        cartDao.deleteAll();
+        assertEquals(0, cartDao.getAllCarts().size());
+    }
 
 }
