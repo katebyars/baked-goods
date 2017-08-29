@@ -19,7 +19,7 @@ public class Sql2oSellerDao implements SellerDao {
 
     @Override
     public void add(Seller seller) {
-        String sql = "INSERT INTO sellers (cartTotal, name, address, email, goodsCategory) VALUES (:cartTotal, :name, :address, :email, :goodsCategory)";
+        String sql = "INSERT INTO sellers (name, address, dietarypreference, email, goodscategory) VALUES (:name, :address, :dietaryPreference, :email, :goodsCategory)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .bind(seller)
@@ -50,13 +50,13 @@ public class Sql2oSellerDao implements SellerDao {
     }
 
     @Override
-    public void update(int id, double cartTotal, String name, String address, String email, String goodsCategory){
-        String sql = "UPDATE sellers SET cartTotal = :cartTotal, name = :name, address = :address, email = :email, goodsCategory = :goodsCategory WHERE id=:id";
+    public void update(int id, String name, String address, String dietaryPreference, String email, String goodsCategory){
+        String sql = "UPDATE sellers SET (name, address, dietarypreference, email, goodscategory) = (:name, :address, :dietaryPreference, :email, :goodsCategory) WHERE id = :id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("cartTotal", cartTotal)
                     .addParameter("name", name)
                     .addParameter("address", address)
+                    .addParameter("dietarypreference", dietaryPreference)
                     .addParameter("email", email)
                     .addParameter("goodsCategory", goodsCategory)
                     .addParameter("id", id)
