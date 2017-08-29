@@ -51,18 +51,18 @@ public class Sql2oCartDaoTest {
         int idOfTest = testCart.getId();
         assertEquals(1, idOfTest);
     }
-//
-//    @Test
-//    public void getAllLangugesGetsAllLanguages_True() {
-//        Cart testCart = setUpCart();
-//        Cart testCart2 = setUpCart();
-//        Cart testCart3 = setUpCart();
-//        cartDao.add(testCart);
-//        cartDao.add(testCart2);
-//        cartDao.add(testCart3);
-//        assertEquals(3, cartDao.getAllCarts().size());
-//    }
-//
+
+    @Test
+    public void getAllCarts_True() {
+        Cart testCart = setUpCart();
+        Cart testCart2 = setUpCart();
+        Cart testCart3 = setUpCart();
+        cartDao.add(testCart);
+        cartDao.add(testCart2);
+        cartDao.add(testCart3);
+        assertEquals(3, cartDao.getAllCarts().size());
+    }
+
 //    @Test
 //    public void getLanguageByID() {
 //        Cart testCart = setUpCart();

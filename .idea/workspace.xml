@@ -36,8 +36,8 @@
           <file leaf-file-name="Sql2oCartDaoTest.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oCartDaoTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="667">
-                  <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+                <state relative-caret-position="787">
+                  <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -688,7 +688,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.Sql2oCartDaoTest.addACartSetsId">
+  <component name="RunManager" selected="JUnit.Sql2oCartDaoTest.getAllCarts_True">
     <configuration default="false" name="Sql2oCartDaoTest.addLanguageAddsInstanceOfLanguage_True" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -754,6 +754,32 @@
       <option name="PACKAGE_NAME" value="dao" />
       <option name="MAIN_CLASS_NAME" value="dao.Sql2oCartDaoTest" />
       <option name="METHOD_NAME" value="addACartSetsId" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="Sql2oCartDaoTest.getAllCarts_True" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="dao.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="baked-goods_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="dao" />
+      <option name="MAIN_CLASS_NAME" value="dao.Sql2oCartDaoTest" />
+      <option name="METHOD_NAME" value="getAllCarts_True" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -971,16 +997,18 @@
       <listeners />
       <method />
     </configuration>
-    <list size="3">
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addLanguageAddsInstanceOfLanguage_True" />
       <item index="1" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartToDao_True" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartSetsId" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.getAllCarts_True" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartSetsId" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartToDao_True" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addLanguageAddsInstanceOfLanguage_True" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.getAllCarts_True" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartSetsId" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addACartToDao_True" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.Sql2oCartDaoTest.addLanguageAddsInstanceOfLanguage_True" />
       </list>
     </recent_temporary>
   </component>
@@ -998,6 +1026,9 @@
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="Sql2oCartDaoTest_addACartSetsId - 2017.08.29 at 11h 48m 16s.xml">
+      <configuration name="Sql2oCartDaoTest.addACartSetsId" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="Sql2oCartDaoTest_addACartToDao_True - 2017.08.29 at 11h 47m 45s.xml">
       <configuration name="Sql2oCartDaoTest.addACartToDao_True" configurationId="JUnit" />
     </history-entry>
@@ -1254,20 +1285,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oCartDaoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/CartDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="667">
-          <caret line="47" column="24" lean-forward="false" selection-start-line="47" selection-start-column="24" selection-end-line="47" selection-end-column="24" />
+        <state relative-caret-position="405">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/CartDao.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oCartDaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="787">
+          <caret line="55" column="27" lean-forward="false" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
