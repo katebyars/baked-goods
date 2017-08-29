@@ -13,15 +13,15 @@ public interface CartDao {
     //create
     void add(Cart cart);
 
-    //read
-    List<Cart> getAllCarts();
-    Cart findById(int id);
-    Cart findByBuyer(int buyerId);
-
-    //update
-    void update(int id, double cartTotal);
-
-    //delete
-    void deleteById(int id); //see above
-    void deleteAll();
+//    //read
+//    List<Cart> getAllCarts();
+//    Cart findById(int id);
+//    Cart findByBuyer(int buyerId);
+//
+//    //update
+//    void update(int id, double cartTotal);
+//
+//    //delete
+//    void deleteById(int id); //see above
+//    void deleteAll();
 }

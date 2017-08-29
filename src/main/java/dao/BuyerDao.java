@@ -1,8 +1,8 @@
-package dao;
-import models.Buyer;
-import java.util.List;
+//package dao;
+//import models.Buyer;
+//import java.util.List;
 
-public interface BuyerDao {
+//public interface BuyerDao {
 
 //    //create
 //    void add();
@@ -19,5 +19,5 @@ public interface BuyerDao {
 //    void deleteById(int id); //see above
 //
 //    void deleteAll();
-}
+//}
 

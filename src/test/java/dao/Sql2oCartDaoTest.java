@@ -7,16 +7,16 @@ import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import static org.junit.Assert.*;
 
-public class Sql2oLanguageDaoTest {
+public class Sql2oCartDaoTest {
 
-    private Sql2oLanguageDao languageDao;
+    private Sql2oCartDao cartDao;
     private Connection conn;
 
     @Before
     public void setUp() throws Exception {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
-        languageDao = new Sql2oLanguageDao(sql2o);
+        cartDao = new Sql2oCartDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -26,77 +26,77 @@ public class Sql2oLanguageDaoTest {
     }
 
     //helper
-    public Language setUpLanguage () {
-        return new Language ("Turkish") ;
+    public Cart setUpCart () {
+        return new Cart (0) ;
 
     }
 
     @Test
     public void addLanguageAddsInstanceOfLanguage_True() throws Exception {
-        Language testLanguage = setUpLanguage();
-        assertTrue(testLanguage instanceof Language);
+        Cart testCart = setUpCart();
+        assertTrue(testCart instanceof Cart);
     }
 
-    @Test
-    public void addLanguageAddsALanguageToDao_True() throws Exception {
-        Language testLanguage = setUpLanguage();
-        languageDao.add(testLanguage);
-        assertEquals(1,languageDao.getAll().size());
-    }
-
-    @Test
-    public void addLanguageSetsId() throws Exception {
-        Language testLanguage = setUpLanguage();
-        languageDao.add(testLanguage);
-        int idOfTest = testLanguage.getId();
-        assertEquals(1, idOfTest);
-    }
-
-    @Test
-    public void getAllLangugesGetsAllLanguages_True() {
-        Language testLanguage = setUpLanguage();
-        Language testLanguage2 = setUpLanguage();
-        Language testLanguage3 = setUpLanguage();
-        languageDao.add(testLanguage);
-        languageDao.add(testLanguage2);
-        languageDao.add(testLanguage3);
-        assertEquals(3, languageDao.getAll().size());
-    }
-
-    @Test
-    public void getLanguageByID() {
-        Language language = setUpLanguage();
-        Language language1 = new Language("Sicilian");
-        languageDao.add(language);
-        languageDao.add(language1);
-        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
-    }
-
-    @Test
-    public void updateChangesName() {
-        Language language = setUpLanguage();
-        languageDao.add(language);
-//        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
-        languageDao.update(1, "Italian");
-        assertEquals("Italian", languageDao.findById(1).getlanguagename());
-    }
-
-    @Test
-    public void deleteALanguageFromTheDao_True() {
-        Language language = setUpLanguage();
-        languageDao.add(language);
-        assertEquals(1, languageDao.getAll().size());
-        languageDao.deleteById(1);
-        assertEquals(0, languageDao.getAll().size());
-    }
-
-    @Test
-    public void deleteAllLanguages() {
-        Language language = setUpLanguage();
-        languageDao.add(language);
-        assertEquals(1, languageDao.getAll().size());
-        languageDao.deleteAll();
-        assertEquals(0, languageDao.getAll().size());
-    }
+//    @Test
+//    public void addLanguageAddsALanguageToDao_True() throws Exception {
+//        Cart testCart = setUpCart();
+//        cartDao.add(testCart);
+//        assertEquals(1,cartDao.getAllCarts().size());
+//    }
+//
+//    @Test
+//    public void addLanguageSetsId() throws Exception {
+//        Cart testCart = setUpCart();
+//        cartDao.add(testCart);
+//        int idOfTest = testCart.getId();
+//        assertEquals(1, idOfTest);
+//    }
+//
+//    @Test
+//    public void getAllLangugesGetsAllLanguages_True() {
+//        Cart testCart = setUpCart();
+//        Cart testCart2 = setUpCart();
+//        Cart testCart3 = setUpCart();
+//        cartDao.add(testCart);
+//        cartDao.add(testCart2);
+//        cartDao.add(testCart3);
+//        assertEquals(3, cartDao.getAllCarts().size());
+//    }
+//
+//    @Test
+//    public void getLanguageByID() {
+//        Cart testCart = setUpCart();
+//        Cart testCart1 = setUpCart(13.00);
+//        cartDao.add(testCart);
+//        cartDao.add(testCart1);
+//        assertEquals(0, cartDao.findById(1).getCartTotal());
+//    }
+//
+//    @Test
+//    public void updateChangesName() {
+//        Cart testCart = setUpCart();
+//        cartDao.add(testCart);
+////        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
+//        cartDao.update(1, 0);
+//        assertEquals(0, cartDao.findById(1).getCartTotal());
+//    }
+//
+//    @Test
+//    public void deleteALanguageFromTheDao_True() {
+//        Cart testCart = setUpCart();
+//        cartDao.add(testCart);
+//        assertEquals(1, cartDao.getAllCarts().size());
+//        cartDao.deleteById(1);
+//        assertEquals(0, cartDao.getAllCarts().size());
+//    }
+//
+//    @Test
+//    public void deleteAllLanguages() {
+//        Cart testCart = setUpCart();
+//        cartDao.add(testCart);
+//        assertEquals(1, cartDao.getAllCarts().size());
+//        cartDao.deleteAll();
+//        assertEquals(0, cartDao.getAllCarts().size());
+//    }
 
 }
