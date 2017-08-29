@@ -1,21 +1,23 @@
-//package dao;
-//import models.Seller;
+package dao;
+import models.Seller;
+
+import java.util.List;
+
+public interface SellerDao {
+
+    //create
+//    void add();
 //
-//public interface SellerDao {
+//    //read
+//    List<Seller> getAll();
 //
-//    //    //create
-////    void add();
-////
-////    //read
-////    List<> getAll();
-////
-////    findById(int id);
-////
-////    //update
-////    void update(int id, String xxx);
-////
-////    //delete
-////    void deleteById(int id); //see above
-////
-////    void deleteAll();
-//}
+//    Seller findById(int id);
+//
+//    //update
+//    void update(int id, String xxx);
+//
+//    //delete
+//    void deleteById(int id); //see above
+//
+//    void deleteAll();
+}

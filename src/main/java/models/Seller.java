@@ -13,8 +13,8 @@ public class Seller extends Cart {
     private int id;
     private int cartId;
 
-    public Seller(List cartItems, double cartTotal, String name, String address, String email, String goodsCategory) {
-        super(cartItems, cartTotal);
+    public Seller(double cartTotal, String name, String address, String email, String goodsCategory) {
+        super(cartTotal);
         this.name = name;
         this.address = address;
         this.email = email;
