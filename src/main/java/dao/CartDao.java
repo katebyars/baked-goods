@@ -17,11 +17,11 @@ public interface CartDao {
     List<Cart> getAllCarts();
     Cart findById(int id);
 //    Cart findByBuyer(int buyerId);
-//
+
 //    //update
     void updateCart(int id, double cartTotal);
-//
+
 //    //delete
-//    void deleteById(int id); //see above
+    void deleteById(int id);
 //    void deleteAll();
 }
