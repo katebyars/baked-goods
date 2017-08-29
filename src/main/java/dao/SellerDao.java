@@ -13,7 +13,7 @@ public interface SellerDao {
     Seller findById(int id);
 
     //update
-    void update(int id, double cartTotal, String name, String address, String email, String goodsCategory);
+    void update(int id, String name, String address, String dietaryPreference, String email, String goodsCategory);
 
     //delete
     void deleteById(int id); //see above

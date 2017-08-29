@@ -3,7 +3,7 @@ import models.Cart;
 
 import java.util.List;
 
-public class Seller extends Cart {
+public class Seller extends User {
 
     private String name;
     private String address;
@@ -13,21 +13,15 @@ public class Seller extends Cart {
     private int id;
     private int cartId;
 
-    public Seller(double cartTotal, String name, String address, String email, String goodsCategory) {
-        super(cartTotal);
-        this.name = name;
-        this.address = address;
-        this.email = email;
+    public Seller(String name, String address, String dietaryPreference, String email, String goodsCategory) {
+        super(name, address, dietaryPreference, email);
         this.goodsCategory = goodsCategory;
-        this.goodsInventory = goodsInventory;
     }
 
-    @Override
     public int getId() {
         return id;
     }
 
-    @Override
     public void setId(int id) {
         this.id = id;
     }
@@ -54,6 +48,14 @@ public class Seller extends Cart {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getDietaryPreference() {
+        return dietaryPreference;
+    }
+
+    public void setDietaryPreference(String dietaryPreference) {
+        this.dietaryPreference = dietaryPreference;
     }
 
     public String getEmail() {

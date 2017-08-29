@@ -1,25 +1,19 @@
-//package models;
-//import models.Cart;
-//import java.util.ArrayList;
-//import java.util.List;
-//
-//public class Buyer extends Cart {
-//
-//    private String name;
-//    private String deliveryAddress;
-//    private String dietaryPreference;
-//    private String emailAddress;
-//    private int id;
-//    private int cartId;
-//
-//
-//    public Buyer(String name, String deliveryAddress, String dietaryPreference, String emailAddress, List cartItems, double cartTotal) {
-//        super(cartItems, cartTotal);
-//        this.name = name;
-//        this.deliveryAddress = deliveryAddress;
-//        this.dietaryPreference = dietaryPreference;
-//        this.emailAddress = emailAddress;
-//    }
+package models;
+import models.Cart;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Buyer extends User {
+
+    private int id;
+    private int cartId;
+
+
+    public Buyer(String name, String address, String dietaryPreference, String email, int cartId) {
+        super(name, address, dietaryPreference, email);
+        this.cartId = cartId;
+
+    }
 //
 //    public String getName() {
 //        return name;
@@ -84,4 +78,4 @@
 //        result = 31 * result + emailAddress.hashCode();
 //        return result;
 //    }
-//}
+}
