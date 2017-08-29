@@ -5,15 +5,14 @@ import models.Items;
 public interface ItemsDao {
 
     //create
-    void add();
+    void add(Items item);
 
     //read
-    List<Items> getAll();
-
+    List<Items>getAllItems();
     Items findById(int id);
 
     //update
-    void update(int id, double cartTotal, String name, String address, String email, String goodsCategory);
+    void update(int id, String itemName, String itemCategory, double itemPrice);
 
     //delete
     void deleteById(int id);

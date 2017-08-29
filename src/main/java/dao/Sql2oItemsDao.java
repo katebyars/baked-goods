@@ -1,6 +1,5 @@
 package dao;
 import models.Items;
-import models.Seller;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -29,33 +28,30 @@ public class Sql2oItemsDao implements ItemsDao {
     }
 
     @Override
-    public List<Seller> getAll() {
+    public List<Items>getAllItems(){
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM items")
-                    .executeAndFetch(Seller.class);
+                    .executeAndFetch(Items.class);
         }
-
     }
 
     @Override
-    public Seller findById(int id) {
+    public Items findById(int id) {
         try (Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM items WHERE id = :id")
                     .addParameter("id", id)
-                    .executeAndFetchFirst(Seller.class);
+                    .executeAndFetchFirst(Items.class);
         }
     }
 
     @Override
-    public void update(int id, double cartTotal, String name, String address, String email, String goodsCategory){
-        String sql = "UPDATE items SET cartTotal = :cartTotal, name = :name, address = :address, email = :email, goodsCategory = :goodsCategory WHERE id=:id";
+    public void update(int id, String itemName, String itemCategory, double itemPrice){
+        String sql = "UPDATE items SET itemName = :itemName, itemCategory =:itemCategory, itemPrice = :itemPrice WHERE id=:id";
         try(Connection con = sql2o.open()){
             con.createQuery(sql)
-                    .addParameter("cartTotal", cartTotal)
-                    .addParameter("name", name)
-                    .addParameter("address", address)
-                    .addParameter("email", email)
-                    .addParameter("goodsCategory", goodsCategory)
+                    .addParameter("itemName", itemName)
+                    .addParameter("itemCategory", itemCategory)
+                    .addParameter("itemPrice", itemPrice)
                     .addParameter("id", id)
                     .executeUpdate();
         } catch (Sql2oException ex) {
