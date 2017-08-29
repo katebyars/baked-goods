@@ -1,0 +1,21 @@
+//create a new language
+
+{
+	"languagename": "Italian"
+}
+
+
+//create a new word
+
+{
+    "word": "buongiorno",
+    "definition": "hello"
+}
+
+
+//create a new phrase
+
+{
+    "phrase": "Buongiorno Principessa!",
+    "definition": "Hello Princess!",
+}
