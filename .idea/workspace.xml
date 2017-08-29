@@ -8,7 +8,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/SellerDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/SellerDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/models/Seller.java" afterPath="$PROJECT_DIR$/src/main/java/models/Seller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db/create.sql" afterPath="$PROJECT_DIR$/src/main/resources/db/create.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java" afterPath="$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -80,25 +80,57 @@
           <file leaf-file-name="Sql2oSellerDao.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="135">
-                  <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+                <state relative-caret-position="300">
+                  <caret line="20" column="114" lean-forward="false" selection-start-line="20" selection-start-column="114" selection-end-line="20" selection-end-column="114" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#270#271#0" expanded="true" />
-                    <element signature="e#304#305#0" expanded="true" />
+                    <element signature="e#290#291#0" expanded="true" />
+                    <element signature="e#324#325#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="SellerDao.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="create.sql" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/resources/db/create.sql">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="195">
+                  <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="SellerDao.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/dao/SellerDao.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="120">
-                  <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="17" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Sql2oCartDao.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/dao/Sql2oCartDao.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Cart.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/models/Cart.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="390">
+                  <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -107,7 +139,7 @@
       </split-first>
       <split-second>
         <leaf>
-          <file leaf-file-name="Seller.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="Seller.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/models/Seller.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="240">
@@ -121,11 +153,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Sql2oSellerDaoTest.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Sql2oSellerDaoTest.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="262">
-                  <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+                <state relative-caret-position="397">
+                  <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -441,7 +473,6 @@
         <option value="$PROJECT_DIR$/src/test/java/dao/Sql2oBuyerDaoTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/dao/Sql2oItemsDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/App.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/db/create.sql" />
         <option value="$PROJECT_DIR$/src/main/java/dao/Sql2oItemsDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/BuyerDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/Sql2oBuyerDao.java" />
@@ -452,9 +483,10 @@
         <option value="$PROJECT_DIR$/src/main/java/models/Buyer.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Items.java" />
         <option value="$PROJECT_DIR$/src/main/java/models/Seller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java" />
         <option value="$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/dao/SellerDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/db/create.sql" />
       </list>
     </option>
   </component>
@@ -1106,9 +1138,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Sql2oCartDaoTest_addACartSetsId - 2017.08.29 at 11h 48m 16s.xml">
-      <configuration name="Sql2oCartDaoTest.addACartSetsId" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="Sql2oCartDaoTest_deleteACartFromTheDao_True - 2017.08.29 at 12h 04m 02s.xml">
       <configuration name="Sql2oCartDaoTest.deleteACartFromTheDao_True" configurationId="JUnit" />
     </history-entry>
@@ -1136,6 +1165,9 @@
     <history-entry file="Sql2oCartDaoTest_updateCartChangesTotal - 2017.08.29 at 12h 02m 12s.xml">
       <configuration name="Sql2oCartDaoTest.updateCartChangesTotal" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="Sql2oSellerDaoTest_addSeller_True - 2017.08.29 at 13h 37m 59s.xml">
+      <configuration name="Sql2oSellerDaoTest.addSeller_True" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="23" width="2558" height="1338" extended-state="6" />
@@ -1144,7 +1176,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3130016" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3130016" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1153,10 +1185,10 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282504" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1388443" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1388443" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13275039" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11844197" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1235,24 +1267,6 @@
           <folding>
             <element signature="e#0#344#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/Sql2oCartDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="22" column="36" lean-forward="true" selection-start-line="22" selection-start-column="36" selection-end-line="22" selection-end-column="36" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/db/create.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1345,11 +1359,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/models/Cart.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="397">
+          <caret line="41" column="19" lean-forward="true" selection-start-line="41" selection-start-column="19" selection-end-line="41" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/SellerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/dao/Sql2oCartDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="19" column="43" lean-forward="true" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1393,35 +1429,118 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/Sql2oSellerDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="300">
+          <caret line="20" column="114" lean-forward="false" selection-start-line="20" selection-start-column="114" selection-end-line="20" selection-end-column="114" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#270#271#0" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#290#291#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/dao/Sql2oSellerDaoTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db/create.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="195">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/dao/SellerDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/models/Cart.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="390">
+          <caret line="38" column="0" lean-forward="true" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>baked-goods</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: com.github.jknack:handlebars-guava-cache:4.0.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
