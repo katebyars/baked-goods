@@ -44,13 +44,13 @@ public class Sql2oCartDaoTest {
         assertEquals(1,cartDao.getAllCarts().size());
     }
 
-//    @Test
-//    public void addLanguageSetsId() throws Exception {
-//        Cart testCart = setUpCart();
-//        cartDao.add(testCart);
-//        int idOfTest = testCart.getId();
-//        assertEquals(1, idOfTest);
-//    }
+    @Test
+    public void addACartSetsId() throws Exception {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        int idOfTest = testCart.getId();
+        assertEquals(1, idOfTest);
+    }
 //
 //    @Test
 //    public void getAllLangugesGetsAllLanguages_True() {
