@@ -1,4 +1,5 @@
 package dao;
+import models.Items;
 import models.Seller;
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +29,12 @@ public class Sql2oSellerDaoTest {
     //helper
     public Seller setUpSeller () {
         return new Seller (0, "Betty Jean", "1234 Easy Street", "betty@bettyjeanbakedgoods.com", "Crumpets");
+    }
+
+    //helper
+    public Items setUpItem () {
+        return new Items ("Crumpet", "Tea Time", 5.00) ;
+
     }
 
     @Test
@@ -97,5 +104,24 @@ public class Sql2oSellerDaoTest {
         sellerDao.deleteAll();
         assertEquals(0, sellerDao.getAll().size());
     }
+
+    @Test
+    public void addITemsToSellersAdds_True() throws Exception{
+
+            Seller seller = setUpSeller();
+            Seller seller2 = setUpSeller();
+
+            SellerDao.add(seller);
+            SellerDao.add(seller2);
+
+            Foodtype testFoodtype = setupNewFoodtype();
+
+            foodtypeDao.add(testFoodtype);
+
+            foodtypeDao.addFoodtypeToRestaurant(testFoodtype, testRestaurant);
+            foodtypeDao.addFoodtypeToRestaurant(testFoodtype, altRestaurant);
+
+            assertEquals(2, foodtypeDao.getAllRestaurantsForAFoodtype(testFoodtype.getId()).size());
+        }
 
 }

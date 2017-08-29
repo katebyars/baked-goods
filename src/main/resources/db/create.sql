@@ -21,6 +21,17 @@ CREATE TABLE IF NOT EXISTS sellers (
  goodsCategory VARCHAR
 );
 
+CREATE TABLE IF NOT EXISTS sellers_items (
+ id int PRIMARY KEY auto_increment,
+ sellerId INTEGER,
+ itemId INTEGER
+);
+
+CREATE TABLE IF NOT EXISTS carts_items (
+ id int PRIMARY KEY auto_increment,
+ sellerId INTEGER,
+ cartId INTEGER
+);
 
 --CREATE TABLE IF NOT EXISTS buyers (
 -- id int PRIMARY KEY auto_increment,
