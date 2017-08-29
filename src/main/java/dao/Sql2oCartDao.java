@@ -36,16 +36,16 @@ public class Sql2oCartDao implements CartDao {
         }
 
     }
-//
-//    @Override
-//    public Cart findById(int id) {
-//        try (Connection con = sql2o.open()){
-//            return con.createQuery("SELECT * FROM carts WHERE id = :id")
-//                    .addParameter("id", id)
-//                    .executeAndFetchFirst(Cart.class);
-//        }
-//
-//    }
+
+    @Override
+    public Cart findById(int id) {
+        try (Connection con = sql2o.open()){
+            return con.createQuery("SELECT * FROM carts WHERE id = :id")
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Cart.class);
+        }
+
+    }
 //
 //    @Override
 //    public void update(int id, double cartTotal){

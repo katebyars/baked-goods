@@ -10,7 +10,7 @@ public class Cart {
 
     public Cart(double cartTotal) {
         this.cartItems = cartItems;
-        this.cartTotal = 0;
+        this.cartTotal = cartTotal;
     }
 
     public List<Items> getCartItems() {
