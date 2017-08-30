@@ -41,7 +41,7 @@ public class Sql2oItemsDaoTest {
 
 
     @Test
-    public void addItemsddsInstanceOfItems_True() throws Exception {
+    public void addItemsaddsInstanceOfItems_True() throws Exception {
         Items testItem = setUpItem();
         assertTrue(testItem instanceof Items);
     }
