@@ -160,8 +160,6 @@ public class App {
         post("/buyers/:id/update", (request, res) -> {
             Map<String, Object> model = new HashMap<>();
             String newName = request.queryParams("name");
-            int newAge = Integer.parseInt(request.queryParams("age"));
-            String newName = request.queryParams("name");
             String newAddress = request.queryParams("address");
             String newDietaryPreference = request.queryParams("dietaryPreference");
             String newEmail = request.queryParams("email");
