@@ -1,8 +1,12 @@
 package dao;
 import models.Cart;
+import models.Items;
+import models.Seller;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oCartDao implements CartDao {
@@ -27,6 +31,40 @@ public class Sql2oCartDao implements CartDao {
             System.out.println(ex);
         }
     }
+
+    @Override
+    public void addCartToSeller(Cart cart, Seller seller){
+        String query = "INSERT INTO sellers_carts (sellerId, cartId) VALUES (:sellerId, :cartId)";
+        try(Connection con = sql2o.open()){
+            con.createQuery(query)
+                    .addParameter("sellerId", seller.getId())
+                    .addParameter("cartId", cart.getId())
+                    .executeUpdate();
+        } catch (Sql2oException e){
+            System.out.println(e);
+        }
+    }
+    @Override
+    public List<Items> findCartsBySeller(int sellerId){
+        List<Items> cartsBySeller = new ArrayList<>();
+        String query = "SELECT cartId FROM sellers_carts WHERE sellerId = :sellerId";
+        try(Connection con =sql2o.open()){
+            List<Integer> allCartIds = con.createQuery(query)
+                    .addParameter("sellerId", sellerId)
+                    .executeAndFetch(Integer.class);
+            for (Integer allItemsId : allItemsIds) {
+                String query2 = "SELECT * from items WHERE id = :allItemsId";
+                itemsBySeller.add(
+                        con.createQuery(query2)
+                                .addParameter("allItemsId", allItemsId)
+                                .executeAndFetchFirst(Items.class));
+            }
+        }catch(Sql2oException e) {
+            System.out.println(e);
+        }
+        return itemsBySeller;
+    }
+
 
     @Override
     public List<Cart> getAllCarts() {
