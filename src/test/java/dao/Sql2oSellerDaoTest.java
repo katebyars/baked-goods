@@ -57,24 +57,25 @@ public class Sql2oSellerDaoTest {
         assertEquals(1, sellerDao.getAll().size());
     }
 
-//    @Test
-//    public void addItemsToSellersAdds_True() throws Exception {
-//
-//        Seller seller = setUpSeller();
-//        Seller seller2 = setUpSeller();
-//
-//        SellerDao.add(seller);
-//        SellerDao.add(seller2);
-//
-//        Items testItems = setUpItems();
-//
-//        ItemsDao.add(testItems);
-//
-//        SellerDao.addItemsToSellers(testItems, seller);
-//        SellerDao.addItemsToSellers(testItems, seller2);
-//
-//        assertEquals(2, SellerDao.getAllItemsForASeller(testItems.getId()).size());
-//    }
+    @Test
+    public void addItemsToSellersAdds_True() throws Exception {
+
+        Seller seller = setUpSeller();
+
+        sellerDao.add(seller);
+
+
+        Items testItems = setUpItems();
+        Items otherItems = setUpItems();
+
+        itemsDao.add(testItems);
+        itemsDao.add(otherItems);
+
+        sellerDao.addItemsToSellers(seller, testItems);
+        sellerDao.addItemsToSellers(seller, otherItems);
+
+        assertEquals(2, sellerDao.getAllItemsForASeller(testItems.getId()).size());
+    }
 
     @Test
     public void addSellerSetsId() throws Exception {
