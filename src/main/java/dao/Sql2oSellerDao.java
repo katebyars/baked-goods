@@ -73,6 +73,27 @@ public class Sql2oSellerDao implements SellerDao {
     }
 
     @Override
+    public List<Items> findItemsBySeller(int sellerId){
+        List<Items> itemsBySeller = new ArrayList<>();
+        String query = "SELECT itemsId FROM sellers_items WHERE sellerId = :sellerId";
+        try(Connection con =sql2o.open()){
+            List<Integer> allItemsIds = con.createQuery(query)
+                    .addParameter("sellerId", sellerId)
+                    .executeAndFetch(Integer.class);
+            for (Integer allItemsId : allItemsIds) {
+                String query2 = "SELECT * from items WHERE id = :allItemsId";
+                itemsBySeller.add(
+                        con.createQuery(query2)
+                                .addParameter("allItemsId", allItemsId)
+                                .executeAndFetchFirst(Items.class));
+            }
+        }catch(Sql2oException e) {
+            System.out.println(e);
+        }
+        return itemsBySeller;
+    }
+
+    @Override
     public void update(int id, String name, String address, String dietaryPreference, String email, String goodsCategory){
         String sql = "UPDATE sellers SET (name, address, dietaryPreference, email, goodsCategory) = (:name, :address, :dietaryPreference, :email, :goodsCategory) WHERE id = :id";
         try(Connection con = sql2o.open()){
@@ -132,24 +153,4 @@ public class Sql2oSellerDao implements SellerDao {
         }
     }
 
-    @Override
-    public List<Items> findItemsBySeller(int sellerId){
-        List<Items> itemsBySeller = new ArrayList<>();
-        String query = "SELECT itemsId FROM sellers_items WHERE sellerId = :sellerId";
-        try(Connection con =sql2o.open()){
-            List<Integer> allItemsIds = con.createQuery(query)
-                    .addParameter("sellerId", sellerId)
-                    .executeAndFetch(Integer.class);
-            for (Integer allItemsId : allItemsIds) {
-                String query2 = "SELECT * from items WHERE id = :allItemsId";
-                itemsBySeller.add(
-                        con.createQuery(query2)
-                                .addParameter("allItemsId", allItemsId)
-                                .executeAndFetchFirst(Items.class));
-            }
-        }catch(Sql2oException e) {
-            System.out.println(e);
-        }
-        return itemsBySeller;
-    }
 }
