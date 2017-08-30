@@ -146,5 +146,44 @@ public class App {
             model.put("allBuyers", allBuyers);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //show a form to update a buyer
+        get("/buyers/:id/update", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfBuyer = Integer.parseInt(req.params("id"));
+            Buyer editBuyer = buyerDao.findById(idOfBuyer);
+            model.put("editBuyer", editBuyer);
+            return new ModelAndView(model, "form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //process a form to update a buyer
+        post("/buyers/:id/update", (request, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            String newName = request.queryParams("name");
+            int newAge = Integer.parseInt(request.queryParams("age"));
+            String newName = request.queryParams("name");
+            String newAddress = request.queryParams("address");
+            String newDietaryPreference = request.queryParams("dietaryPreference");
+            String newEmail = request.queryParams("email");
+            int idOfBuyer = Integer.parseInt(request.params("id"));
+            buyerDao.update(idOfBuyer, newName, newAddress, newDietaryPreference, newEmail);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //delete a buyer
+        get("/buyers/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            buyerDao.deleteAll();
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //get: delete individual buyer
+        get("/buyers/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfBuyer = Integer.parseInt(req.params("id"));
+            buyerDao.findById(idOfBuyer);
+            buyerDao.deleteById(idOfBuyer);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 }
