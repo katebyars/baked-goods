@@ -1,4 +1,5 @@
 package dao;
+import models.Cart;
 import models.Items;
 import models.Seller;
 import org.junit.After;
@@ -6,11 +7,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class Sql2oSellerDaoTest {
 
     private Sql2oSellerDao sellerDao;
+    private Sql2oItemsDao itemsDao;
     private Connection conn;
 
     @Before
@@ -18,6 +23,7 @@ public class Sql2oSellerDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         sellerDao = new Sql2oSellerDao(sql2o);
+        itemsDao = new Sql2oItemsDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -106,22 +112,35 @@ public class Sql2oSellerDaoTest {
         assertEquals(0, sellerDao.getAll().size());
     }
 
-//    @Test
-//    public void addITemsToSellersAdds_True() throws Exception {
-//
-//        Seller seller = setUpSeller();
-//        Seller seller2 = setUpSeller();
-//
-//        SellerDao.add(seller);
-//        SellerDao.add(seller2);
-//
-//        Foodtype testFoodtype = setupNewFoodtype();
-//
-//        foodtypeDao.add(testFoodtype);
-//
-//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, testRestaurant);
-//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, altRestaurant);
-//
-//        assertEquals(2, foodtypeDao.getAllRestaurantsForAFoodtype(testFoodtype.getId()).size());
-//    }
+    @Test
+    public void addItemsToSellers() throws Exception {
+        Seller seller = setUpSeller();
+        sellerDao.add(seller);
+
+        Items item = setUpItem();
+        itemsDao.add(item);
+
+        sellerDao.addItemsToSeller(seller, item);
+
+        assertEquals(1, sellerDao.findItemsBySeller(seller.getId()).size());
+    }
+
+    @Test
+    public void findAllItemsBySeller_True() {
+        Seller seller = setUpSeller();
+        sellerDao.add(seller);
+
+        Items item1 = setUpItem();
+        itemsDao.add(item1);
+
+        Items item2 = setUpItem();
+        itemsDao.add(item2);
+
+        sellerDao.addItemsToSeller(seller, item1);
+        sellerDao.addItemsToSeller(seller, item2);
+
+        Items[] items = {item1, item2};
+
+        assertEquals(sellerDao.findItemsBySeller(seller.getId()).size(), Arrays.asList(items).size());
+    }
 }
