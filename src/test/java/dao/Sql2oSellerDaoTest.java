@@ -26,7 +26,20 @@ public class Sql2oSellerDaoTest {
         conn.close();
     }
 
+
+    //helper
+    public Seller setUpSeller() {
+        return new Seller("Betty Jean", "1234 Easy Street", "betty@bettyjeanbakedgoods.com", "Crumpets", "");
+    }
+
+    //helper
+    public Items setUpItem() {
+        return new Items("Crumpet", "Tea Time", 5.00);
+
+    }
+
     @Test
+
     public void addSeller_True() throws Exception {
         Seller testSeller = setUpSeller();
         assertTrue(testSeller instanceof Seller);
@@ -36,7 +49,7 @@ public class Sql2oSellerDaoTest {
     public void addSellerAddsASellerToDao_True() throws Exception {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
-        assertEquals(1,sellerDao.getAll().size());
+        assertEquals(1, sellerDao.getAll().size());
     }
 
     @Test
@@ -61,7 +74,7 @@ public class Sql2oSellerDaoTest {
     @Test
     public void getSellerByID() {
         Seller testSeller = setUpSeller();
-        Seller testSeller2 = new Seller ("Jean Pierre", "1234 Easy Street", "none", "jeanniep@aol.com", "Crumpets");
+        Seller testSeller2 = new Seller("Jean Pierre", "1234 Easy Street", "none", "jeanniep@aol.com", "Crumpets");
         sellerDao.add(testSeller);
         sellerDao.add(testSeller2);
         assertEquals("Jean Pierre", sellerDao.findById(1).getName());
@@ -72,7 +85,7 @@ public class Sql2oSellerDaoTest {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
 //        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
-        sellerDao.update(1, "Betty Ann", "1234 Easy Street",  "everything", "betty@bettyjeanbakedgoods.com", "Crumpets");
+        sellerDao.update(1, "Betty Ann", "1234 Easy Street", "everything", "betty@bettyjeanbakedgoods.com", "Crumpets");
         assertEquals("Betty Ann", sellerDao.findById(1).getName());
     }
 
@@ -94,8 +107,22 @@ public class Sql2oSellerDaoTest {
         assertEquals(0, sellerDao.getAll().size());
     }
 
-    //helper
-    public Seller setUpSeller () {
-        return new Seller ("Betty Jean", "1234 Easy Street", "vegan/paleo/gluten-free(I make them all","betty@bettyjeanbakedgoods.com", "Crumpets");
-    }
+//    @Test
+//    public void addITemsToSellersAdds_True() throws Exception {
+//
+//        Seller seller = setUpSeller();
+//        Seller seller2 = setUpSeller();
+//
+//        SellerDao.add(seller);
+//        SellerDao.add(seller2);
+//
+//        Foodtype testFoodtype = setupNewFoodtype();
+//
+//        foodtypeDao.add(testFoodtype);
+//
+//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, testRestaurant);
+//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, altRestaurant);
+//
+//        assertEquals(2, foodtypeDao.getAllRestaurantsForAFoodtype(testFoodtype.getId()).size());
+//    }
 }
