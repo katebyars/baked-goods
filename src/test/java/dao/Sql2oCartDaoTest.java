@@ -1,5 +1,6 @@
 package dao;
 import models.Cart;
+import models.Items;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +11,7 @@ import static org.junit.Assert.*;
 public class Sql2oCartDaoTest {
 
     private Sql2oCartDao cartDao;
+    private Sql2oItemsDao itemsDao;
     private Connection conn;
 
     @Before
@@ -17,6 +19,7 @@ public class Sql2oCartDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         cartDao = new Sql2oCartDao(sql2o);
+        itemsDao = new Sql2oItemsDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -25,10 +28,13 @@ public class Sql2oCartDaoTest {
         conn.close();
     }
 
-    //helper
+    //helpers
     public Cart setUpCart () {
         return new Cart (0.0) ;
+    }
 
+    public Items setUpItem () {
+        return new Items ("Crumpet", "Tea Time", 5.00) ;
     }
 
     @Test
@@ -98,4 +104,12 @@ public class Sql2oCartDaoTest {
         assertEquals(0, cartDao.getAllCarts().size());
     }
 
+    @Test
+    public void addRowToCarts_Items_True() throws Exception {
+        Cart testCart = setUpCart();
+        Items testItem = setUpItem();
+        cartDao.add(testCart);
+        itemsDao.add(testItem);
+        //add them to the carts_items table
+    }
 }

@@ -29,7 +29,6 @@ public class Sql2oItemsDaoTest {
     //helper
     public Items setUpItem () {
         return new Items ("Crumpet", "Tea Time", 5.00) ;
-
     }
 
     @Test

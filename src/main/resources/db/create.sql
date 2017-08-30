@@ -35,3 +35,22 @@ CREATE TABLE IF NOT EXISTS sellers (
 --);
 --
 --
+
+CREATE TABLE IF NOT EXISTS carts_items (
+  id int PRIMARY KEY auto_increment,
+  )
+
+--
+--CREATE TABLE IF NOT EXISTS sellers_items (
+--  id int PRIMARY KEY auto_increment,
+--  )
+--
+--
+--CREATE TABLE IF NOT EXISTS buyers_carts (
+--  id int PRIMARY KEY auto_increment,
+--  )
+--
+--
+--CREATE TABLE IF NOT EXISTS sellers_carts (
+--  id int PRIMARY KEY auto_increment,
+--  )
