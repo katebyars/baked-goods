@@ -44,6 +44,13 @@ public class Sql2oCartDaoTest {
     }
 
     @Test
+    public void cartHasAnId_True () {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        assertEquals(1, cartDao.findById(1).getId());
+    }
+
+    @Test
     public void addACartToDao_True() throws Exception {
         Cart testCart = setUpCart();
         cartDao.add(testCart);
@@ -104,12 +111,5 @@ public class Sql2oCartDaoTest {
         assertEquals(0, cartDao.getAllCarts().size());
     }
 
-    @Test
-    public void addRowToCarts_Items_True() throws Exception {
-        Cart testCart = setUpCart();
-        Items testItem = setUpItem();
-        cartDao.add(testCart);
-        itemsDao.add(testItem);
-        //add them to the carts_items table
-    }
+
 }

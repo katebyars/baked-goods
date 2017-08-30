@@ -35,12 +35,6 @@ CREATE TABLE IF NOT EXISTS sellers_items (
  itemId INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS carts_items (
- id int PRIMARY KEY auto_increment,
- sellerId INTEGER,
- cartId INTEGER
-);
-
 CREATE TABLE IF NOT EXISTS buyers (
  id int PRIMARY KEY auto_increment,
   name VARCHAR,
@@ -50,18 +44,11 @@ CREATE TABLE IF NOT EXISTS buyers (
   cartId INTEGER,
 );
 
-
---CREATE TABLE IF NOT EXISTS buyers (
--- id int PRIMARY KEY auto_increment,
---);
---
---
-
 CREATE TABLE IF NOT EXISTS carts_items (
   id int PRIMARY KEY auto_increment,
   itemsId INTEGER,
   cartId INTEGER
-  )
+ );
 
 --
 --CREATE TABLE IF NOT EXISTS sellers_items (
@@ -78,3 +65,9 @@ CREATE TABLE IF NOT EXISTS carts_items (
 --  id int PRIMARY KEY auto_increment,
 --  )
 
+
+--CREATE TABLE IF NOT EXISTS buyers (
+-- id int PRIMARY KEY auto_increment,
+--);
+--
+--
