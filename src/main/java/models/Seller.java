@@ -13,6 +13,7 @@ public class Seller extends User {
     public Seller(String name, String address, String dietaryPreference, String email, String goodsCategory) {
         super(name, address, dietaryPreference, email);
         this.goodsCategory = goodsCategory;
+        this.id = id;
     }
 
 

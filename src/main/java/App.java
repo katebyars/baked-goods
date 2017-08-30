@@ -51,6 +51,14 @@ public class App {
             return new ModelAndView(model, "home.hbs");
         }, new HandlebarsTemplateEngine());
         ///-------------------------------------///
+        ///..SELLER PORTAL..///
+        get("/sellerportal", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("sellers", allSellers);
+            return new ModelAndView(model, "sellerportal.hbs");
+        }, new HandlebarsTemplateEngine());
+        ///-------------------------------------///
         ///..GET seller DELETE (all)..///
         get("/sellerportal/delete", (request, response) ->{
             Map<String, Object> model = new HashMap<>();
@@ -92,7 +100,7 @@ public class App {
         ///..GET seller UPDATE..///
         get("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int sellerId2 = Integer.parseInt(request.params("id"));
+            int editSeller = Integer.parseInt(request.params("id"));
             model.put("editSeller", true);
             List<Seller> allSellers = sellerDao.getAll();
             model.put("sellers", allSellers);
@@ -110,7 +118,7 @@ public class App {
             sellerDao.update(sellerDao.findById(sellerId3).getId(), newName, newAddress, newEmail, newDietaryPreference, newGoodsCategory);
             List<Seller> allSellers = sellerDao.getAll();
             model.put("sellers", allSellers);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "sellerportal.hbs");
         }, new HandlebarsTemplateEngine());
         ///-------------------------------------///
         ///..GET seller DELETE (by id)..///
