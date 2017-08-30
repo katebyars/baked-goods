@@ -9,7 +9,11 @@ public interface CartDao {
 
     //create
     void add(Cart cart);
+
+    void addItemsToCart(Items item, Cart cart);
+
     void addCartToSeller(Cart cart, Seller seller);
+
 
     //read
     List<Cart> getAllCarts();
