@@ -2,21 +2,21 @@ SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS items (
  id int PRIMARY KEY auto_increment,
- itemname VARCHAR,
- itemcategory VARCHAR,
- itemprice DOUBLE
+ itemName VARCHAR,
+ itemCategory VARCHAR,
+ itemPrice DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS carts (
  id int PRIMARY KEY auto_increment,
- carttotal DOUBLE
+ cartTotal DOUBLE
 );
 
 CREATE TABLE IF NOT EXISTS users (
  id int PRIMARY KEY auto_increment,
  name VARCHAR,
  address VARCHAR,
- dietarypreference VARCHAR,
+ dietaryPreference VARCHAR,
  email VARCHAR,
 );
 
@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS sellers (
  id int PRIMARY KEY auto_increment,
  name VARCHAR,
  address VARCHAR,
- dietarypreference VARCHAR,
+ dietaryPreference VARCHAR,
  email VARCHAR,
- goodscategory VARCHAR,
+ goodsCategory VARCHAR,
 );
 
 
