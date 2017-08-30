@@ -6,11 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class Sql2oSellerDaoTest {
 
     private Sql2oSellerDao sellerDao;
+    private Sql2oItemsDao itemsDao;
     private Connection conn;
 
     @Before
@@ -18,6 +22,7 @@ public class Sql2oSellerDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         sellerDao = new Sql2oSellerDao(sql2o);
+        itemsDao = new Sql2oItemsDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -33,7 +38,7 @@ public class Sql2oSellerDaoTest {
     }
 
     //helper
-    public Items setUpItem() {
+    public Items setUpItems() {
         return new Items("Crumpet", "Tea Time", 5.00);
 
     }
@@ -52,12 +57,50 @@ public class Sql2oSellerDaoTest {
         assertEquals(1, sellerDao.getAll().size());
     }
 
+//    @Test
+//    public void addItemsToSellersAdds_True() throws Exception {
+//
+//        Seller seller = setUpSeller();
+//        Seller seller2 = setUpSeller();
+//
+//        SellerDao.add(seller);
+//        SellerDao.add(seller2);
+//
+//        Items testItems = setUpItems();
+//
+//        ItemsDao.add(testItems);
+//
+//        SellerDao.addItemsToSellers(testItems, seller);
+//        SellerDao.addItemsToSellers(testItems, seller2);
+//
+//        assertEquals(2, SellerDao.getAllItemsForASeller(testItems.getId()).size());
+//    }
+
     @Test
     public void addSellerSetsId() throws Exception {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
         int idOfTest = testSeller.getId();
         assertEquals(1, idOfTest);
+    }
+
+    @Test
+    public void getAllItemsForASellerReturnsItemsCorrectly() throws Exception {
+        Items testItems = setUpItems();
+        itemsDao.add(testItems);
+
+        Items otherItems  = new Items("Milk Duds", "Cinema Treats", 5.00);
+        itemsDao.add(otherItems);
+
+        Seller testSeller = setUpSeller();
+        sellerDao.add(testSeller);
+        sellerDao.addItemsToSellers(testSeller,testItems);
+        sellerDao.addItemsToSellers(testSeller,otherItems);
+        System.out.println(sellerDao.getAllItemsForASeller(testSeller.getId()));
+
+        Items[] items = {testItems, otherItems}; //oh hi what is this?
+
+        assertEquals(sellerDao.getAllItemsForASeller(testSeller.getId()), Arrays.asList(items));
     }
 
     @Test
@@ -106,22 +149,4 @@ public class Sql2oSellerDaoTest {
         assertEquals(0, sellerDao.getAll().size());
     }
 
-//    @Test
-//    public void addItemsToSellersAdds_True() throws Exception {
-//
-//        Seller seller = setUpSeller();
-//        Seller seller2 = setUpSeller();
-//
-//        SellerDao.add(seller);
-//        SellerDao.add(seller2);
-//
-//        Item testItem = setupNewItem();
-//
-//        ItemDao.add(testItem);
-//
-//        ItemDao.addItemToRestaurant(testItem, testRestaurant);
-//        ItemDao.addItemToRestaurant(testItem, altRestaurant);
-//
-//        assertEquals(2, ItemDao.getAllRestaurantsForAItem(testItem.getId()).size());
-//    }
 }

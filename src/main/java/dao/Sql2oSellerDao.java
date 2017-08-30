@@ -32,12 +32,49 @@ public class Sql2oSellerDao implements SellerDao {
     }
 
     @Override
+    public void addItemsToSellers(Seller seller, Items items){
+        String sql = "INSERT INTO sellers_items (sellerId, itemsId) VALUES (:sellerId, :itemsId)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("sellerId", seller.getId())
+                    .addParameter("itemsId", items.getId())
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+
+    }
+
+    @Override
     public List<Seller> getAll() {
         try(Connection con = sql2o.open()){
             return con.createQuery("SELECT * FROM sellers")
                     .executeAndFetch(Seller.class);
         }
 
+    }
+
+    @Override
+    public List<Items> getAllItemsForASeller(int sellerId) {
+        ArrayList<Items> items = new ArrayList<>();
+
+        String joinQuery = "SELECT itemsId FROM sellers_items WHERE sellerId = :sellerId";
+
+        try (Connection con = sql2o.open()) {
+            List<Integer> allItemsIds = con.createQuery(joinQuery)
+                    .addParameter("sellerId", sellerId)
+                    .executeAndFetch(Integer.class);
+            for (Integer itemsId : allItemsIds){
+                String itemQuery = "SELECT * FROM items WHERE id = :itemsId";
+                items.add(
+                        con.createQuery(itemQuery)
+                                .addParameter("itemsId", itemsId)
+                                .executeAndFetchFirst(Items.class));
+            }
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+        return items;
     }
 
     @Override
@@ -90,40 +127,4 @@ public class Sql2oSellerDao implements SellerDao {
         }
     }
 
-    @Override
-    public void addItemsToSellers(Seller seller, Items items){
-        String sql = "INSERT INTO sellers_items (sellerId, itemId) VALUES (:sellerId, :itemId)";
-        try (Connection con = sql2o.open()) {
-            con.createQuery(sql)
-                    .addParameter("sellerId", seller.getId())
-                    .addParameter("itemId", items.getId())
-                    .executeUpdate();
-        } catch (Sql2oException ex){
-            System.out.println(ex);
-        }
-    }
-
-    @Override
-    public List<Items> getAllItemsForASeller(int sellerId) {
-
-        ArrayList<Items> items = new ArrayList<>();
-
-        String joinQuery = "SELECT itemId FROM sellers_items WHERE sellerId = :sellerId";
-
-        try (Connection con = sql2o.open()) {
-            List<Integer> allItemIds = con.createQuery(joinQuery)
-                    .addParameter("sellerId", sellerId)
-                    .executeAndFetch(Integer.class);
-            for (Integer allItemId : allItemIds){
-                String restaurantQuery = "SELECT * FROM items WHERE id = :allItemId";
-                items.add(
-                        con.createQuery(restaurantQuery)
-                                .addParameter("itemId", allItemId)
-                                .executeAndFetchFirst(Items.class));
-            }
-        } catch (Sql2oException ex){
-            System.out.println(ex);
-        }
-        return items;
-    }
 }
