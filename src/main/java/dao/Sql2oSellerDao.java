@@ -1,9 +1,12 @@
 package dao;
 import models.Cart;
+import models.Items;
 import models.Seller;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oSellerDao implements SellerDao {
@@ -85,5 +88,42 @@ public class Sql2oSellerDao implements SellerDao {
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
+    }
+
+    @Override
+    public void addItemsToSellers(Seller seller, Items items){
+        String sql = "INSERT INTO sellers_items (sellerId, itemId) VALUES (:sellerId, :itemId)";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("sellerId", seller.getId())
+                    .addParameter("itemId", items.getId())
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+    }
+
+    @Override
+    public List<Items> getAllItemsForASeller(int sellerId) {
+
+        ArrayList<Items> items = new ArrayList<>();
+
+        String joinQuery = "SELECT itemId FROM sellers_items WHERE sellerId = :sellerId";
+
+        try (Connection con = sql2o.open()) {
+            List<Integer> allItemIds = con.createQuery(joinQuery)
+                    .addParameter("sellerId", sellerId)
+                    .executeAndFetch(Integer.class);
+            for (Integer allItemId : allItemIds){
+                String restaurantQuery = "SELECT * FROM items WHERE id = :allItemId";
+                items.add(
+                        con.createQuery(restaurantQuery)
+                                .addParameter("itemId", allItemId)
+                                .executeAndFetchFirst(Items.class));
+            }
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
+        return items;
     }
 }
