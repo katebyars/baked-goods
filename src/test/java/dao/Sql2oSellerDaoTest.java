@@ -1,5 +1,6 @@
 package dao;
 import models.Items;
+import models.Items;
 import models.Seller;
 import org.junit.After;
 import org.junit.Before;
@@ -139,6 +140,24 @@ public class Sql2oSellerDaoTest {
         assertEquals(1, sellerDao.getAll().size());
         sellerDao.deleteById(1);
         assertEquals(0, sellerDao.getAll().size());
+    }
+
+    @Test
+    public void deletingSellerAlsoUpdatesJoinTable() throws Exception {
+        Items testItems  = setUpItems();
+        itemsDao.add(testItems);
+
+        Items otherItems  = new Items("Milk Duds", "Cinema Treats", 5.00);
+        itemsDao.add(otherItems);
+
+        Seller testSeller = setUpSeller();
+        sellerDao.add(testSeller);
+
+        sellerDao.addItemsToSellers(testSeller, testItems);
+        sellerDao.addItemsToSellers(testSeller, otherItems);
+
+        sellerDao.deleteById(testSeller.getId());
+        assertEquals(0, sellerDao.getAllItemsForASeller(testSeller.getId()).size());
     }
 
     @Test

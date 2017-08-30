@@ -106,9 +106,14 @@ public class Sql2oSellerDao implements SellerDao {
     @Override
     public void deleteById(int id) {
         String sql = "DELETE from sellers WHERE id=:id";
+        String deleteJoin = "Delete from sellers_items WHERE sellerId = :sellerId";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
                     .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeUpdate();
+            con.createQuery(deleteJoin)
+                    .addParameter("sellerId", id)
                     .executeUpdate();
         } catch (Sql2oException ex){
             System.out.println(ex);
