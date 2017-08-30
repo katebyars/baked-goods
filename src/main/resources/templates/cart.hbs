@@ -1,0 +1,17 @@
+{{#partial "content"}}
+
+    <h1>Shopping Cart</h1>
+    {{#if items}}
+        {{#each items}}
+            <p>{{itemsName}} {{itemsPrice}}</p>
+
+        {{/each}}
+    {{else}}
+            <p>Your Shopping Cart is Empty</p>
+
+    {{/if}}
+            <a href="/items">Continue Shopping</a>
+
+{{/partial}}
+
+{{> layout.hbs}}

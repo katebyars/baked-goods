@@ -1,8 +1,8 @@
 package models;
-
+import models.Items;
 import java.util.List;
 
-public class Cart {
+public class Cart{
 
     private List<Items> cartItems;
     private double cartTotal;
@@ -23,6 +23,14 @@ public class Cart {
 
     public double getCartTotal() {
         return cartTotal;
+    }
+
+    public double addCartTotal(){
+        double totalCost = 0.0;
+        for(int i = 0; i < cartItems.size(); i++) {
+            totalCost += cartItems.get(i).getItemPrice();
+        }
+        return totalCost;
     }
 
     public void setCartTotal(double cartTotal) {

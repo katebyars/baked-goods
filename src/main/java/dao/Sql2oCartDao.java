@@ -1,8 +1,13 @@
 package dao;
 import models.Cart;
+import models.Items;
+import models.Seller;
+
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oCartDao implements CartDao {
@@ -25,6 +30,25 @@ public class Sql2oCartDao implements CartDao {
             cart.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+
+    public void addItemsToCart(Items item, Cart cart){
+        String query = "INSERT INTO carts_items (itemsId, cartId) VALUES (:itemsId, :cartId)";
+        try(Connection con = sql2o.open()){
+            con.createQuery(query)
+                    .addParameter("itemsId", item.getId())
+
+    public void addCartToSeller(Cart cart, Seller seller){
+        String query = "INSERT INTO sellers_carts (sellerId, cartId) VALUES (:sellerId, :cartId)";
+        try(Connection con = sql2o.open()){
+            con.createQuery(query)
+                    .addParameter("sellerId", seller.getId())
+                    .addParameter("cartId", cart.getId())
+                    .executeUpdate();
+        } catch (Sql2oException e){
+            System.out.println(e);
         }
     }
 

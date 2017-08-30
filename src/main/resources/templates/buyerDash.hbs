@@ -1,0 +1,24 @@
+{{#partial "content"}}
+
+    hello
+{{ currentBuyer.cartId }}
+    Welcome {{ currentBuyer.name }} !
+
+    {{#if allCarts}}
+
+        {{#each allCarts}}
+            <h4> the goodies </h4>
+            <hr noshade>
+            <p> {{itemName}}</p>
+            <p><a href="/HANDLER/{{id}}">read more...</a></p>
+            <hr noshade>
+        {{/each}}
+    {{else}}
+        <br>
+        <br>
+        <p>No BREAD!</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}
