@@ -77,15 +77,14 @@ public class Sql2oSellerDaoTest {
         Seller testSeller2 = new Seller("Jean Pierre", "1234 Easy Street", "none", "jeanniep@aol.com", "Crumpets");
         sellerDao.add(testSeller);
         sellerDao.add(testSeller2);
-        assertEquals("Jean Pierre", sellerDao.findById(1).getName());
+        assertEquals("Jean Pierre", sellerDao.findById(2).getName());
     }
 
     @Test
     public void updateChangesName() {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
-//        assertEquals("Turkish", languageDao.findById(1).getlanguagename());
-        sellerDao.update(1, "Betty Ann", "1234 Easy Street", "everything", "betty@bettyjeanbakedgoods.com", "Crumpets");
+        sellerDao.update(1, "Betty Ann", "1234 Easy Street",  "everything", "betty@bettyjeanbakedgoods.com", "Crumpets");
         assertEquals("Betty Ann", sellerDao.findById(1).getName());
     }
 
