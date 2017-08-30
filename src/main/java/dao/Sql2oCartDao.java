@@ -44,26 +44,6 @@ public class Sql2oCartDao implements CartDao {
             System.out.println(e);
         }
     }
-    @Override
-    public List<Items> findCartsBySeller(int sellerId){
-        List<Items> cartsBySeller = new ArrayList<>();
-        String query = "SELECT cartId FROM sellers_carts WHERE sellerId = :sellerId";
-        try(Connection con =sql2o.open()){
-            List<Integer> allCartIds = con.createQuery(query)
-                    .addParameter("sellerId", sellerId)
-                    .executeAndFetch(Integer.class);
-            for (Integer allItemsId : allItemsIds) {
-                String query2 = "SELECT * from items WHERE id = :allItemsId";
-                itemsBySeller.add(
-                        con.createQuery(query2)
-                                .addParameter("allItemsId", allItemsId)
-                                .executeAndFetchFirst(Items.class));
-            }
-        }catch(Sql2oException e) {
-            System.out.println(e);
-        }
-        return itemsBySeller;
-    }
 
 
     @Override

@@ -14,7 +14,7 @@ public interface CartDao {
     //read
     List<Cart> getAllCarts();
     Cart findById(int id);
-    List<Cart> findCartsBySeller();
+//    List<Cart> findCartsBySeller();
 
 //    Cart findByBuyer(int buyerId);
 
