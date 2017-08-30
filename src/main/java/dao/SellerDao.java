@@ -8,12 +8,12 @@ public interface SellerDao {
 
     //create
     void add(Seller seller);
-    void addItemsToSellers(Seller seller, Items items);
+    void addItemsToSeller(Seller seller, Items item);
 
     //read
     List<Seller> getAll();
     Seller findById(int id);
-    List<Items> getAllItemsForASeller(int sellerId);
+    List<Items> findItemsBySeller(int sellerId);
 
     //update
     void update(int id, String name, String address, String dietaryPreference, String email, String goodsCategory);
