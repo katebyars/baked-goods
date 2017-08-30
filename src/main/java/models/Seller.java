@@ -5,9 +5,6 @@ import java.util.List;
 
 public class Seller extends User {
 
-    private String name;
-    private String address;
-    private String email;
     private String goodsCategory;
     private List<Items> goodsInventory;
     private int id;
