@@ -1,5 +1,6 @@
 package dao;
 import models.Cart;
+import models.Items;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import org.sql2o.Sql2oException;
@@ -25,6 +26,19 @@ public class Sql2oCartDao implements CartDao {
             cart.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
+        }
+    }
+
+    @Override
+    public void addItemsToCart(Items item, Cart cart){
+        String query = "INSERT INTO carts_items (itemsId, cartId) VALUES (:itemsId, :cartId)";
+        try(Connection con = sql2o.open()){
+            con.createQuery(query)
+                    .addParameter("itemsId", item.getId())
+                    .addParameter("cartId", cart.getId())
+                    .executeUpdate();
+        } catch (Sql2oException e){
+            System.out.println(e);
         }
     }
 

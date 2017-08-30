@@ -55,14 +55,14 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
-    public void addLanguageAddsALanguageToDao_True() throws Exception {
+    public void addItemAddsAItemToDao_True() throws Exception {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         assertEquals(1,itemsDao.getAllItems().size());
     }
 
     @Test
-    public void addLanguageSetsId() throws Exception {
+    public void addItemSetsId() throws Exception {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         int idOfTest = testItem.getId();
@@ -70,7 +70,7 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
-    public void getAllLangugesGetsAllLanguages_True() {
+    public void getAllItemsGetsAllItems_True() {
         Items testItem = setUpItem();
         Items testItem2 = setUpItem();
         Items testItem3 = setUpItem();
@@ -81,7 +81,7 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
-    public void getLanguageByID() {
+    public void getItemByID() {
         Items testItem = setUpItem();
         Items testItem2 = new Items("Milk Duds", "Cinema Treats", 5.00);
         itemsDao.add(testItem);
@@ -98,7 +98,7 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
-    public void deleteALanguageFromTheDao_True() {
+    public void deleteAItemFromTheDao_True() {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         assertEquals(1, itemsDao.getAllItems().size());
@@ -107,7 +107,7 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
-    public void deleteAllLanguages() {
+    public void deleteAllItems() {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         assertEquals(1, itemsDao.getAllItems().size());
@@ -126,6 +126,7 @@ public class Sql2oItemsDaoTest {
 
         assertEquals(1, itemsDao.findByCart(testCart.getId()).size());
     }
+
 
     @Test
     public void findAllItemsByCartId_True() {
