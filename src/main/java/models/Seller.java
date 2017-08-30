@@ -59,20 +59,14 @@ public class Seller extends User {
 
         if (id != seller.id) return false;
         if (cartId != seller.cartId) return false;
-        if (!name.equals(seller.name)) return false;
-        if (!address.equals(seller.address)) return false;
-        if (!email.equals(seller.email)) return false;
         if (!goodsCategory.equals(seller.goodsCategory)) return false;
-        return goodsInventory != null ? goodsInventory.equals(seller.goodsInventory) : seller.goodsInventory == null;
+        return goodsInventory.equals(seller.goodsInventory);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + address.hashCode();
-        result = 31 * result + email.hashCode();
-        result = 31 * result + goodsCategory.hashCode();
-        result = 31 * result + (goodsInventory != null ? goodsInventory.hashCode() : 0);
+        int result = goodsCategory.hashCode();
+        result = 31 * result + goodsInventory.hashCode();
         result = 31 * result + id;
         result = 31 * result + cartId;
         return result;

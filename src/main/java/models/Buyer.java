@@ -23,6 +23,7 @@ public class Buyer extends User {
     public void setName(String name) {
         this.name = name;
     }
+
     public int getCartId() {
         return cartId;
     }
