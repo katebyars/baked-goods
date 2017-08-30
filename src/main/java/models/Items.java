@@ -12,6 +12,7 @@ public class Items {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemPrice = itemPrice;
+        this.id = id;
     }
 
     public int getId() {

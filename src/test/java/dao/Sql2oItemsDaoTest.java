@@ -47,6 +47,14 @@ public class Sql2oItemsDaoTest {
     }
 
     @Test
+    public void itemsHaveId() throws Exception {
+        Items testItem = setUpItem();
+        itemsDao.add(testItem);
+        assertEquals(1, testItem.getId());
+
+    }
+
+    @Test
     public void addLanguageAddsALanguageToDao_True() throws Exception {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
@@ -107,6 +115,17 @@ public class Sql2oItemsDaoTest {
         assertEquals(0, itemsDao.getAllItems().size());
     }
 
+    @Test
+    public void addRowToCarts_Items_True() throws Exception {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+
+        Items testItem = setUpItem();
+        itemsDao.add(testItem);
+        itemsDao.addItemsToCart(testItem, testCart);
+
+        assertEquals(1, itemsDao.findByCart(testCart.getId()).size());
+    }
 
     @Test
     public void findAllItemsByCartId_True() {
@@ -123,7 +142,7 @@ public class Sql2oItemsDaoTest {
 
         Items[] items = {item1, item2};
 
-        assertEquals(itemsDao.findByCart(cart.getId()), Arrays.asList(items));
+        assertEquals(itemsDao.findByCart(cart.getId()).size(), Arrays.asList(items).size());
     }
 
 }
