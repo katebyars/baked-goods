@@ -134,8 +134,11 @@ public class App {
         String email = request.queryParams("email");
         Buyer buyer = new Buyer(name, address, dietaryPreference, email, cart.getId());
         buyerDao.add(buyer);
+        int buyerId =
+                Integer.parseInt(buyerDao.findById(buyer.getId());
+        model.put("buyerId", buyerId);
         model.put("currentBuyer", buyer);
-        response.redirect("buyers/:buyerId/buyerdash");
+        response.redirect("/buyers/:buyerId");
         return null;
     }, new HandlebarsTemplateEngine());
 
