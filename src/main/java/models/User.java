@@ -10,8 +10,7 @@ public class User {
     public String email;
     public int id;
 
-    public User (String name, String address, String dietaryPreference, String email) {
-
+    public User(String name, String address, String dietaryPreference, String email) {
         this.name = name;
         this.address = address;
         this.dietaryPreference = dietaryPreference;
