@@ -1,8 +1,6 @@
 package models;
 
-
 public class User {
-
 
     public String name;
     public String address;
@@ -15,6 +13,7 @@ public class User {
         this.address = address;
         this.dietaryPreference = dietaryPreference;
         this.email = email;
+        this.id = id;
     }
 
     public String getName() {
