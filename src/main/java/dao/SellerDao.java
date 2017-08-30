@@ -8,10 +8,12 @@ public interface SellerDao {
 
     //create
     void add(Seller seller);
-    void addItemsToSeller(Seller seller, Items item);
+    void addItemsToSeller(Seller seller, Items items);
 
     //read
     List<Seller> getAll();
+    List<Items> getAllItemsForASeller(int sellerId);
+
     Seller findById(int id);
     List<Items> findItemsBySeller(int sellerId);
 

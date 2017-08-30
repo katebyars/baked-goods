@@ -39,7 +39,7 @@ public class Sql2oSellerDaoTest {
     }
 
     //helper
-    public Items setUpItem() {
+    public Items setUpItems() {
         return new Items("Crumpet", "Tea Time", 5.00);
 
     }
@@ -59,11 +59,50 @@ public class Sql2oSellerDaoTest {
     }
 
     @Test
+    public void addItemsToSellersAdds_True() throws Exception {
+
+        Seller seller = setUpSeller();
+
+        sellerDao.add(seller);
+
+
+        Items testItems = setUpItems();
+        Items otherItems = setUpItems();
+
+        itemsDao.add(testItems);
+        itemsDao.add(otherItems);
+
+        sellerDao.addItemsToSeller(seller, testItems);
+        sellerDao.addItemsToSeller(seller, otherItems);
+
+        assertEquals(2, sellerDao.getAllItemsForASeller(testItems.getId()).size());
+    }
+
+    @Test
     public void addSellerSetsId() throws Exception {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
         int idOfTest = testSeller.getId();
         assertEquals(1, idOfTest);
+    }
+
+    @Test
+    public void getAllItemsForASellerReturnsItemsCorrectly() throws Exception {
+        Items testItems = setUpItems();
+        itemsDao.add(testItems);
+
+        Items otherItems  = new Items("Milk Duds", "Cinema Treats", 5.00);
+        itemsDao.add(otherItems);
+
+        Seller testSeller = setUpSeller();
+        sellerDao.add(testSeller);
+        sellerDao.addItemsToSeller(testSeller,testItems);
+        sellerDao.addItemsToSeller(testSeller,otherItems);
+        System.out.println(sellerDao.getAllItemsForASeller(testSeller.getId()));
+
+        Items[] items = {testItems, otherItems}; //oh hi what is this?
+
+        assertEquals(sellerDao.getAllItemsForASeller(testSeller.getId()), Arrays.asList(items));
     }
 
     @Test
@@ -104,6 +143,24 @@ public class Sql2oSellerDaoTest {
     }
 
     @Test
+    public void deletingSellerAlsoUpdatesJoinTable() throws Exception {
+        Items testItems  = setUpItems();
+        itemsDao.add(testItems);
+
+        Items otherItems  = new Items("Milk Duds", "Cinema Treats", 5.00);
+        itemsDao.add(otherItems);
+
+        Seller testSeller = setUpSeller();
+        sellerDao.add(testSeller);
+
+        sellerDao.addItemsToSeller(testSeller, testItems);
+        sellerDao.addItemsToSeller(testSeller, otherItems);
+
+        sellerDao.deleteById(testSeller.getId());
+        assertEquals(0, sellerDao.getAllItemsForASeller(testSeller.getId()).size());
+    }
+
+    @Test
     public void deleteAllSellers() {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
@@ -117,7 +174,7 @@ public class Sql2oSellerDaoTest {
         Seller seller = setUpSeller();
         sellerDao.add(seller);
 
-        Items item = setUpItem();
+        Items item = setUpItems();
         itemsDao.add(item);
 
         sellerDao.addItemsToSeller(seller, item);
@@ -130,10 +187,10 @@ public class Sql2oSellerDaoTest {
         Seller seller = setUpSeller();
         sellerDao.add(seller);
 
-        Items item1 = setUpItem();
+        Items item1 = setUpItems();
         itemsDao.add(item1);
 
-        Items item2 = setUpItem();
+        Items item2 = setUpItems();
         itemsDao.add(item2);
 
         sellerDao.addItemsToSeller(seller, item1);
