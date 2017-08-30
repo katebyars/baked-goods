@@ -44,10 +44,14 @@ CREATE TABLE IF NOT EXISTS sellers_items (
  itemsId INTEGER
 );
 
+CREATE TABLE IF NOT EXISTS sellers_carts (
+ id int PRIMARY KEY auto_increment,
+ sellerId INTEGER,
+ cartId INTEGER
+);
+
 CREATE TABLE IF NOT EXISTS carts_items (
  id int PRIMARY KEY auto_increment,
  itemsId INTEGER,
  cartId INTEGER
 );
-
-
