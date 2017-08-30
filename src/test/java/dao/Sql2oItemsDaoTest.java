@@ -1,5 +1,6 @@
 
 package dao;
+import models.Cart;
 import models.Items;
 import org.junit.After;
 import org.junit.Before;
@@ -7,10 +8,13 @@ import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import static org.junit.Assert.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Sql2oItemsDaoTest {
 
     private Sql2oItemsDao itemsDao;
+    private Sql2oCartDao cartDao;
     private Connection conn;
 
     @Before
@@ -18,6 +22,7 @@ public class Sql2oItemsDaoTest {
         String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "", "");
         itemsDao = new Sql2oItemsDao(sql2o);
+        cartDao = new Sql2oCartDao(sql2o);
         conn = sql2o.open();
     }
 
@@ -26,10 +31,14 @@ public class Sql2oItemsDaoTest {
         conn.close();
     }
 
-    //helper
+    //helpers
     public Items setUpItem () {
         return new Items ("Crumpet", "Tea Time", 5.00) ;
     }
+    public Cart setUpCart () {
+        return new Cart (0.0) ;
+    }
+
 
     @Test
     public void addItemsddsInstanceOfItems_True() throws Exception {
@@ -96,6 +105,25 @@ public class Sql2oItemsDaoTest {
         assertEquals(1, itemsDao.getAllItems().size());
         itemsDao.deleteAll();
         assertEquals(0, itemsDao.getAllItems().size());
+    }
+
+
+    @Test
+    public void findAllItemsByCartId_True() {
+        Cart cart = setUpCart();
+        cartDao.add(cart);
+
+        Items item1 = setUpItem();
+        Items item2 = setUpItem();
+        itemsDao.add(item1);
+        itemsDao.add(item2);
+
+        itemsDao.addItemsToCart(item1, cart);
+        itemsDao.addItemsToCart(item2, cart);
+
+        Items[] items = {item1, item2};
+
+        assertEquals(itemsDao.findByCart(cart.getId()), Arrays.asList(items));
     }
 
 }

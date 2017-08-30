@@ -38,6 +38,8 @@ CREATE TABLE IF NOT EXISTS sellers (
 
 CREATE TABLE IF NOT EXISTS carts_items (
   id int PRIMARY KEY auto_increment,
+  itemsId INTEGER,
+  cartId INTEGER
   )
 
 --
