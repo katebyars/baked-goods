@@ -113,12 +113,37 @@ public class App {
 //            return new ModelAndView(model, "index.hbs");
 //        }, new HandlebarsTemplateEngine());
 
+
+        get("/home", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            return new ModelAndView(model, "home.hbs");
+        }, new HandlebarsTemplateEngine());
+        ///-------------------------------------///
+        ///..SELLER PORTAL..///
+        get("/sellerportal", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("sellers", allSellers);
+            return new ModelAndView(model, "sellerportal.hbs");
+        }, new HandlebarsTemplateEngine());
+        ///-------------------------------------///
+        ///..GET seller DELETE (all)..///
+        get("/sellerportal/delete", (request, response) ->{
+            Map<String, Object> model = new HashMap<>();
+            sellerDao.deleteAll();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+        ///-------------------------------------///
+//        ///..GET seller CREATE..///
+//        get("sellerportal/newseller", (request, response) -> {
+
 //cart routes
 
 //buyer routes
 
         //show a new buyer form
         get("/buyers/new", (request, response) -> {
+
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newbuyer-form.hbs");
         }, new HandlebarsTemplateEngine());
@@ -150,15 +175,35 @@ public class App {
         //show a form to update a buyer
         get("/buyers/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
+
+            int editSeller = Integer.parseInt(request.params("id"));
+            model.put("editSeller", true);
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("sellers", allSellers);
+            return new ModelAndView(model, "seller-form.hbs");
+
             int idOfBuyer = Integer.parseInt(req.params("id"));
             Buyer editBuyer = buyerDao.findById(idOfBuyer);
             model.put("editBuyer", editBuyer);
             return new ModelAndView(model, "form.hbs");
+
         }, new HandlebarsTemplateEngine());
 
         //process a form to update a buyer
         post("/buyers/:id/update", (request, res) -> {
             Map<String, Object> model = new HashMap<>();
+
+            int sellerId3 = Integer.parseInt(request.queryParams("newSellerId"));
+            String newName = request.queryParams("newName");
+            String newAddress = request.queryParams("newAddress");
+            String newEmail = request.queryParams("newEmail");
+            String newDietaryPreference = request.queryParams("newDietaryPreference");
+            String newGoodsCategory = request.queryParams("newGoodsCategory");
+            sellerDao.update(sellerDao.findById(sellerId3).getId(), newName, newAddress, newEmail, newDietaryPreference, newGoodsCategory);
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("sellers", allSellers);
+            return new ModelAndView(model, "sellerportal.hbs");
+
             String newName = request.queryParams("name");
             String newAddress = request.queryParams("address");
             String newDietaryPreference = request.queryParams("dietaryPreference");
@@ -166,6 +211,7 @@ public class App {
             int idOfBuyer = Integer.parseInt(request.params("id"));
             buyerDao.update(idOfBuyer, newName, newAddress, newDietaryPreference, newEmail);
             return new ModelAndView(model, "index.hbs");
+
         }, new HandlebarsTemplateEngine());
 
         //delete a buyer
