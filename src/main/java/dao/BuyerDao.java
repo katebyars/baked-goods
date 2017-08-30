@@ -1,23 +1,23 @@
-//package dao;
-//import models.Buyer;
-//import java.util.List;
+package dao;
+import models.Buyer;
+import java.util.List;
 
-//public interface BuyerDao {
+public interface BuyerDao {
 
-//    //create
-//    void add();
-//
-//    //read
-//    List<> getAll();
-//
-//    findById(int id);
-//
+    //create
+    void add(Buyer buyer);
+
+    //read
+    List<Buyer> getAll();
+
+    Buyer findById(int id);
+
 //    //update
-//    void update(int id, String xxx);
+    void update(int id, String name, String address, String dietaryPreference, String email);
 //
 //    //delete
-//    void deleteById(int id); //see above
+    void deleteById(int id); //see above
 //
-//    void deleteAll();
-//}
+    void deleteAll();
+}
 
