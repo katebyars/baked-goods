@@ -108,7 +108,7 @@ public class Sql2oSellerDaoTest {
     }
 
 //    @Test
-//    public void addITemsToSellersAdds_True() throws Exception {
+//    public void addItemsToSellersAdds_True() throws Exception {
 //
 //        Seller seller = setUpSeller();
 //        Seller seller2 = setUpSeller();
@@ -116,13 +116,13 @@ public class Sql2oSellerDaoTest {
 //        SellerDao.add(seller);
 //        SellerDao.add(seller2);
 //
-//        Foodtype testFoodtype = setupNewFoodtype();
+//        Item testItem = setupNewItem();
 //
-//        foodtypeDao.add(testFoodtype);
+//        ItemDao.add(testItem);
 //
-//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, testRestaurant);
-//        foodtypeDao.addFoodtypeToRestaurant(testFoodtype, altRestaurant);
+//        ItemDao.addItemToRestaurant(testItem, testRestaurant);
+//        ItemDao.addItemToRestaurant(testItem, altRestaurant);
 //
-//        assertEquals(2, foodtypeDao.getAllRestaurantsForAFoodtype(testFoodtype.getId()).size());
+//        assertEquals(2, ItemDao.getAllRestaurantsForAItem(testItem.getId()).size());
 //    }
 }
