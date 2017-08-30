@@ -7,7 +7,7 @@ public class Seller extends User {
 
     private String goodsCategory;
     private List<Items> goodsInventory;
-    private static int id;
+    private int id;
     private int cartId;
 
     public Seller(String name, String address, String dietaryPreference, String email, String goodsCategory) {
@@ -33,7 +33,7 @@ public class Seller extends User {
     }
 
     @Override
-    public  int getId() {
+    public int getId() {
         return id;
     }
 
@@ -57,6 +57,7 @@ public class Seller extends User {
 
         Seller seller = (Seller) o;
 
+        if (id != seller.id) return false;
         if (cartId != seller.cartId) return false;
         if (!goodsCategory.equals(seller.goodsCategory)) return false;
         return goodsInventory.equals(seller.goodsInventory);
@@ -66,6 +67,7 @@ public class Seller extends User {
     public int hashCode() {
         int result = goodsCategory.hashCode();
         result = 31 * result + goodsInventory.hashCode();
+        result = 31 * result + id;
         result = 31 * result + cartId;
         return result;
     }

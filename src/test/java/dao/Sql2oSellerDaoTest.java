@@ -1,6 +1,6 @@
 package dao;
 import models.Items;
-import models.Items;
+
 import models.Seller;
 import org.junit.After;
 import org.junit.Before;
