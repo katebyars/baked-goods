@@ -50,16 +50,20 @@ public class App {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "home.hbs");
         }, new HandlebarsTemplateEngine());
-
-
-
+        ///-------------------------------------///
+        ///..GET seller DELETE (all)..///
+        get("/sellerportal/delete", (request, response) ->{
+            Map<String, Object> model = new HashMap<>();
+            sellerDao.deleteAll();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
         ///-------------------------------------///
         ///..GET seller CREATE..///
         get("sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Seller> sellers = sellerDao.getAll();
             model.put("sellers", sellers);
-            return new ModelAndView(model, "newseller-form.hbs");
+            return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
         ///..POST seller CREATE..///
         post("sellerportal/newseller", (request, response) -> {
@@ -108,9 +112,16 @@ public class App {
             model.put("sellers", allSellers);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-
-
-
+        ///-------------------------------------///
+        ///..GET seller DELETE (by id)..///
+        get("/sellerportal/:id/delete", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int deleteId = Integer.parseInt(request.params("id"));
+            Seller delete = sellerDao.findById(deleteId);
+            sellerDao.deleteById(deleteId);
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+        ///-------------------------------------///
 
 
 //        ///..items CREATE..///
@@ -159,78 +170,8 @@ public class App {
 //        ///-------------------------------------///
 
 
-//        //CREATE
-//
-//        //a new word
-//        post("/languages/:languageId/words/new", "application/json", (req, res) -> {
-//            int languageId = Integer.parseInt(req.params("languageId"));
-//            Word word = gson.fromJson(req.body(), Word.class);
-//            word.setLanguageId(languageId);
-//            wordDao.add(word);
-//            res.status(201);
-//            return gson.toJson(word); });
-//        //a new phrase
-//        post("/languages/:languageid/phrases/new", "application/json", (req, res) -> {
-//            int languageid = Integer.parseInt(req.params("languageid"));
-//            Phrase phrase = gson.fromJson(req.body(), Phrase.class);
-//            phrase.setLanguageid(languageid);
-//            phraseDao.add(phrase);
-//            res.status(201);
-//            return gson.toJson(phrase); });
-//        //a new language
-//        post("/languages/new", "application/json", (req, res) -> {
-//            Language language = gson.fromJson(req.body(), Language.class);
-//            languageDao.add(language);
-//            res.status(201);;
-//            return gson.toJson(language); });
-//        //READ
-//        //all languages
-//        get("/languages", "application/json", (req, res) -> {
-//            return gson.toJson(languageDao.getAll()); });
-//        //languages by id
-//        get("/languages/:id", "application/json", (req, res) -> {
-//            int languageId = Integer.parseInt(req.params("id"));
-//            Language languageToFind = languageDao.findById(languageId);
-//            if (languageToFind == null){
-//                throw new ApiException(404, String.format("No langyage with the id: \"%s\" exists", req.params("id"))); }
-//            return gson.toJson(languageToFind); });
-//        //all words
-//        get("/words", "application/json", (req, res) -> {
-//            return gson.toJson(wordDao.getAll()); });
-//        //words by id
-//        get("/words/:id", "application/json", (req, res) -> {
-//            int wordId = Integer.parseInt(req.params("id"));
-//            Word wordToFind = wordDao.findById(wordId);
-//            if (wordToFind == null){
-//                throw new ApiException(404, String.format("No langyage with the id: \"%s\" exists", req.params("id"))); }
-//            return gson.toJson(wordToFind); });
-//        //all phrases
-//        get("/phrases", "application/json", (req, res) -> {
-//            return gson.toJson(phraseDao.getAll());});
-//        get("/phrases/:id", "application/json", (req, res) -> {
-//            int phraseId = Integer.parseInt(req.params("id"));
-//            Word phraseToFind = wordDao.findById(phraseId);
-//            if (phraseToFind == null){
-//                throw new ApiException(404, String.format("No langyage with the id: \"%s\" exists", req.params("id"))); }
-//            return gson.toJson(phraseToFind); });
 
 
         ///-------------------------------------///
-//        ///..FILTERS..///
-//        exception(ApiException.class, (exception, req, res) -> {
-//            ApiException err = (ApiException) exception;
-//            Map<String, Object> jsonMap = new HashMap<>();
-//            jsonMap.put("status", err.getStatusCode());
-//            jsonMap.put("errorMessage", err.getMessage());
-//            res.type("application/json");
-//            res.status(err.getStatusCode());
-//            res.body(gson.toJson(jsonMap));
-//        });
-//
-//        after((req, res) ->{
-//            res.type("application/json");
-//        });
-//    }
-///-------------------------------------///
     }
 }
