@@ -1,7 +1,6 @@
 package dao;
 import models.Cart;
 import models.Items;
-
 import models.Seller;
 import org.junit.After;
 import org.junit.Before;
@@ -73,8 +72,8 @@ public class Sql2oSellerDaoTest {
         itemsDao.add(testItems);
         itemsDao.add(otherItems);
 
-        sellerDao.addItemsToSellers(seller, testItems);
-        sellerDao.addItemsToSellers(seller, otherItems);
+        sellerDao.addItemsToSeller(seller, testItems);
+        sellerDao.addItemsToSeller(seller, otherItems);
 
         assertEquals(2, sellerDao.getAllItemsForASeller(testItems.getId()).size());
     }
@@ -97,8 +96,8 @@ public class Sql2oSellerDaoTest {
 
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
-        sellerDao.addItemsToSellers(testSeller,testItems);
-        sellerDao.addItemsToSellers(testSeller,otherItems);
+        sellerDao.addItemsToSeller(testSeller,testItems);
+        sellerDao.addItemsToSeller(testSeller,otherItems);
         System.out.println(sellerDao.getAllItemsForASeller(testSeller.getId()));
 
         Items[] items = {testItems, otherItems}; //oh hi what is this?
@@ -154,8 +153,8 @@ public class Sql2oSellerDaoTest {
         Seller testSeller = setUpSeller();
         sellerDao.add(testSeller);
 
-        sellerDao.addItemsToSellers(testSeller, testItems);
-        sellerDao.addItemsToSellers(testSeller, otherItems);
+        sellerDao.addItemsToSeller(testSeller, testItems);
+        sellerDao.addItemsToSeller(testSeller, otherItems);
 
         sellerDao.deleteById(testSeller.getId());
         assertEquals(0, sellerDao.getAllItemsForASeller(testSeller.getId()).size());
