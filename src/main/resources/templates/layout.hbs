@@ -7,30 +7,25 @@
     <link rel="icon" href="images/bread.png">
 </head>
     <body>
-        <div class="container-fluid">
-            <div class="row header">
-                <h1>Image placeholder</h1>
-            </div>
-        <center>
-            <ul class="nav nav-tabs navbar-right navbar-fixed-top">
-                <li role="presentation" class="active"><a href="/">Home</a></li>
-                <li role="presentation"><a href="/buyers">Buyer Login</a></li>
-                <li role="presentation"><a href="/sellerportal">Seller Login</a></li>
-                <li role="presentation"><a href="/cart">Cart</a></li>
-                <li role="presentation"><a href="/">Welcome {{ this.name }}!</a></li>
-            </ul>
-
-        <div class="container">
 
 
-        <div class="col-md-12">
+            <header>
+                <br>
+                <br>
+                <img src="images/logoSM.png">
+                <br>
+                <br>
+
+                    <ul class="nav nav-pills">
+                        <li><a  href="/"><img src="images/homebutton.png"></a></li>
+                        <li><a  href="/buyers"><img src="images/buybutton.png"></a></li>
+                        <li><a  href="/sellerportal"><img src="images/sellbutton.png"></a></li>
+                        <li><a  href="/"><img src="images/box1.png"></a><div class="center"><b>Welcome {{this.name}} !</b></div></li>
+                        <li><a  href="/"><img src="images/carticon.png"></a></li>
+                    </ul>
+            </header>
             {{#block "content"}}
             {{/block}}
-
-        </div>
-    </div>
-
-    </center>
     {{#block "footer"}}
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

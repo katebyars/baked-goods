@@ -1,0 +1,34 @@
+{{#partial "content"}}
+
+
+
+    <div class="row"><center>><h1>Register Your Buyer Profile</h1></center></div>
+        <form action="/buyers/new" method="post">
+
+            <div class="row">
+                <div class="col-md-3">
+                        <label for="name">Name:</label>
+                        <input id="name" name="name" type="text" required><br>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="description">Shipping Address:</label>
+                    <input id="description" name="description" type="text" required><br>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="speaker">Dietary Preference:</label>
+                    <input id="speaker" name="speaker" type="text" required><br>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="room">Email Address:</label>
+                    <input id="room" name="room" type="text" required><br>
+                </div>
+                <center><button type="submit" class="btn btn-default">Go!</button></center>
+            </div>
+        </form>
+
+
+{{/partial}}
+{{> layout.hbs}}

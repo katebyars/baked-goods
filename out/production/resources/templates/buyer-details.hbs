@@ -1,0 +1,20 @@
+{{#partial "content"}}
+    <div class="row">
+        <div class="col-md-4">
+            <ul>
+                <p class="left"> {{buyer.name}}</p>
+                <p class="left"> {{buyer.address}}</p>
+                <p class="left"> {{buyer.email}}</p>
+                <p class="left"> {{buyer.dietaryPreference}}</p>
+        </div>
+        <div class="col-md-8">
+            </ul>
+
+            <p><a href="/buyers/{{buyer.id}}/update">Update Your Profile</a></p>
+            <p><a href="/buyers/{{buyer.id}}/delete">DELETE your profile (no undo)</a></p>
+            <hr noshade>
+        </div>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}

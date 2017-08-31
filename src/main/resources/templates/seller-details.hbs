@@ -1,57 +1,70 @@
-{{#partial "content"}}
-    <div class="row">
-        <div class="col-md-3">
-        <ul>
-            <p class="left"> {{seller.name}}</p>
-            <p class="left"> {{seller.address}}</p>
-            <p class="left"> {{seller.email}}</p>
-            <p class="left"> {{seller.dietaryPreference}}</p>
-            <p class="left"> {{seller.goodsCategory}}</p>
-        </ul>
-        </div>
-        <div class="col-md-3">
-            <h2>My Store Items</h2>
-                {{#if forSaleItems}}
-                    {{#each forSaleItems}}
-                        <ul>
-                            <h2>{{ itemName }}</h2>
-                            <p> {{ itemCategory }}</p>
-                            <p><{{ itemPrice }}</p>
-                        </ul>
-                    <br>
-                    {{/each}}
-                {{else}}
-                {{/if}}
-        </div>
-        <div class="col-md-6">
-                <h1>Hello {{ seller.name}} ! Add Something Special to your Store</h1>
-        </ul>
+<!--{{#partial "content"}}-->
+    <!--<div class="row">-->
+        <!--<div class="col-md-3">-->
+        <!--<ul>-->
+            <!--<p class="left"> {{seller.name}}</p>-->
+            <!--<p class="left"> {{seller.address}}</p>-->
+            <!--<p class="left"> {{seller.email}}</p>-->
+            <!--<p class="left"> {{seller.dietaryPreference}}</p>-->
+            <!--<p class="left"> {{seller.goodsCategory}}</p>-->
+        <!--</ul>-->
+        <!--</div>-->
+        <!--<div class="col-md-3">-->
+            <!--<h2>My Store Items</h2>-->
+                <!--{{#if forSaleItems}}-->
+                    <!--{{#each forSaleItems}}-->
+                        <!--<ul>-->
+                            <!--<h2>{{ itemName }}</h2>-->
+                            <!--<p> {{ itemCategory }}</p>-->
+                            <!--<p><{{ itemPrice }}</p>-->
+                        <!--</ul>-->
 
-        <p><a href="/sellerportal/items/new">New Items</a></p>
-        <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
-        <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
-        <hr noshade>
-        </div>
-    </div>
-    <div class="row">
-        <h2>Item Market Place</h2>
-        <p>Click on items you would like to list in your store.</p>
-            {{#if items}}
-                hello
-                {{#each items}}
-                    <form action="/sellerportal/{{ sellerToFind.id }}/sell/{{ items.id}}" method="post">
-                        <li>
-                         <h2> {{ itemName }}</h2>
-                            <p> {{ itemCategory }}</p>
-                            <p> {{ itemPrice }}</p>
-                        </li>
-                        <button type="submit">List this item in your store</button>
-                    </form>
-                <br>
-        {{/each}}
-    {{else}}
-    {{/if}}
-    </div>
-{{/partial}}
+            <!--{{#if items}}-->
+                <!--{{#each item}}-->
+                    <!--<li>-->
+                        <!--<p> {{ name }}</p>-->
+                        <!--<p> {{ category }}</p>-->
 
-{{> layout.hbs}}
+                        <!--<br>-->
+                        <!--<a href="/sellerportal/{{seller.id}}/items/{{id}}/update">Edit this team member's information</a><br>-->
+                        <!--<a href="/sellerportal/{{seller.id}}/items/{{id}}/delete">Remove this member from the team</a>-->
+                    <!--</li>-->
+
+                    <!--<br>-->
+                    <!--{{/each}}-->
+                <!--{{else}}-->
+                <!--{{/if}}-->
+        <!--</div>-->
+        <!--<div class="col-md-6">-->
+                <!--<h1>Hello {{ seller.name}} ! Add Something Special to your Store</h1>-->
+        <!--</ul>-->
+
+        <!--<p><a href="/sellerportal/items/new">New Items</a></p>-->
+        <!--<p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>-->
+        <!--<p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>-->
+        <!--<hr noshade>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+        <!--<h2>Item Market Place</h2>-->
+        <!--<p>Click on items you would like to list in your store.</p>-->
+            <!--{{#if items}}-->
+                <!--hello-->
+                <!--{{#each items}}-->
+                    <!--<form action="/sellerportal/{{ sellerToFind.id }}/sell/{{ items.id}}" method="post">-->
+                        <!--<li>-->
+                         <!--<h2> {{ itemName }}</h2>-->
+                            <!--<p> {{ itemCategory }}</p>-->
+                            <!--<p> {{ itemPrice }}</p>-->
+                        <!--</li>-->
+                        <!--<button type="submit">List this item in your store</button>-->
+                    <!--</form>-->
+                <!--<br>-->
+        <!--{{/each}}-->
+    <!--{{else}}-->
+    <!--{{/if}}-->
+    <!--</div>-->
+
+<!--{{/partial}}-->
+
+<!--{{> layout.hbs}}-->
