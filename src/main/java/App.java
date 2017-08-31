@@ -71,23 +71,15 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..SELLER PORTAL..///
-        Spark.get("/sellerportal", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Seller> allSellers = sellerDao.getAll();
-            model.put("sellers", allSellers);
-            return new ModelAndView(model, "sellerportal.hbs");
-        }, new HandlebarsTemplateEngine());
+        ///..SELLERS..///
 
-        ///..GET seller CREATE..///
+        //show a form for a new seller
         Spark.get("/sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            List<Seller> sellers = sellerDao.getAll();
-            model.put("sellers", sellers);
             return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..POST seller CREATE..///
+        //process a form for a new seller
         post("/sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
@@ -101,8 +93,7 @@ public class App {
             return null;
         }, new HandlebarsTemplateEngine());
 
-
-        ///..GET seller READ..///
+        //get seller by id
         Spark.get("/sellerportal/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int sellerId = Integer.parseInt(request.params("id"));
@@ -113,7 +104,7 @@ public class App {
             return new ModelAndView(model, "seller-details.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..GET seller UPDATE..///
+        //update individual seller
         Spark.get("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int sellerId2 = Integer.parseInt(request.params("id"));
@@ -123,38 +114,42 @@ public class App {
             return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///..POST seller UPDATE..///
-        post("/sellerportal/update", (request, response) -> {
+        //process a seller update
+        post("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int sellerId3 = Integer.parseInt(request.queryParams("newSellerId"));
+            int sellerId = Integer.parseInt(request.queryParams("id"));
             String newName = request.queryParams("newName");
             String newAddress = request.queryParams("newAddress");
             String newEmail = request.queryParams("newEmail");
             String newDietaryPreference = request.queryParams("newDietaryPreference");
             String newGoodsCategory = request.queryParams("newGoodsCategory");
-            sellerDao.update(sellerDao.findById(sellerId3).getId(), newName, newAddress, newEmail, newDietaryPreference, newGoodsCategory);
-            List<Seller> allSellers = sellerDao.getAll();
-            model.put("sellers", allSellers);
+            sellerDao.update(sellerId, newName, newAddress, newEmail, newDietaryPreference, newGoodsCategory);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        Spark.get("/sellerportal/:id/items/new", (request, response) -> {
+        //show the seller portal with all sellers
+        Spark.get("/sellerportal", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("allSellers", allSellers);
+            return new ModelAndView(model, "sellerportal.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //show a form to add a new item
+        Spark.get("/sellerportal/items/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "items-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        post("/sellerportal/:id/items/new", (request, response) -> {
+        //process a form to add a new item
+        post("/sellerportal/items/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String category = request.queryParams("category");
             Double price = Double.parseDouble(request.queryParams("itemPrice"));
-            int sellerId = Integer.parseInt(request.queryParams("id"));
             Items items = new Items(name, category, price);
             itemsDao.add(items);
-            sellerDao.addItemsToSeller(sellerDao.findById(sellerId), items);
-            model.put("sellerId", sellerId);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "sellerportal.hbs");
         }, new HandlebarsTemplateEngine());
 
 //cart routes
