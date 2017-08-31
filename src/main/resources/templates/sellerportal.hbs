@@ -1,24 +1,24 @@
 {{#partial "content"}}
 
-    {{#if sellers}}
-
-        {{#each sellers}}
-            <h4><ul> the goodies </ul></h4>
-            <hr noshade>
-            <p> {{name}}</p>
-            <p> {{address}}</p>
-            <p> {{email}}</p>
-            <p> {{dietaryPreference}}</p>
-            <p> {{goodsCategory}}</p>
-            <p><a href="/sellerportal/{{id}}">read more...</a></p>
-            <hr noshade>
-        {{/each}}
-    {{else}}
-        <br>
-        <br><a href=/sellerportal/newseller>CREATE YOUR SELLER</a>
-
-    {{/if}}
-
 {{/partial}}
 
 {{> layout.hbs}}
+
+
+<!--{{#partial "content"}}-->
+
+
+    <!--<u>Here is your seller profile:</u>-->
+    <!--<ul>-->
+        <!--<p> {{seller.name}}</p>-->
+        <!--<p> {{seller.address}}</p>-->
+        <!--<p> {{seller.email}}</p>-->
+        <!--<p> {{seller.dietaryPreference}}</p>-->
+        <!--<p> {{seller.goodsCategory}}</p>-->
+    <!--</ul>-->
+    <!--<hr noshade>-->
+
+    <!--<p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>-->
+    <!--<p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>-->
+    <!--<hr noshade>-->
+<!--{{/partial}}-->

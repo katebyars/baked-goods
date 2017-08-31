@@ -1,8 +1,15 @@
-
 {{#partial "content"}}
 
-    <h4>placeholder</h4>
-
+    {{#if allSellers }}
+        {{#each allSellers }}
+            <div class="gallery">
+                <a target="/sellers/{{ id }}"><img src="{{ image }}" width="600" height="400"></a>
+                <div class="desc">{{ name }}</div>
+            </div>
+        {{/each}}
+    {{else}}
+        <h2>No sellers have registered stores! Shoot.</h2>
+    {{/if }}
 {{/partial}}
 
 {{> layout.hbs}}

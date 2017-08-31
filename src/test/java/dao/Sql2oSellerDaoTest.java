@@ -200,4 +200,10 @@ public class Sql2oSellerDaoTest {
 
         assertEquals(sellerDao.findItemsBySeller(seller.getId()).size(), Arrays.asList(items).size());
     }
+
+    @Test
+    public void findImage_True() {
+        Seller seller = setUpSeller();
+        System.out.printf(seller.getImage());
+    }
 }

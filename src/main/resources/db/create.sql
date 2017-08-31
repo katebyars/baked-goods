@@ -27,6 +27,7 @@ CREATE TABLE IF NOT EXISTS sellers (
  dietaryPreference VARCHAR,
  email VARCHAR,
  goodsCategory VARCHAR,
+ image VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS buyers (
