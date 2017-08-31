@@ -1,7 +1,15 @@
 
 {{#partial "content"}}
 
-    <h4>placeholder</h4>
+    {{#if allSellers }}
+        {{#each allSellters }}
+
+    <div class="gallery">
+        <a target="/sellers/{{ this.id }}" href="bread.png">
+            <img src="/images/{{this.image}}" alt="image name is {{this.image}}" width="600" height="400">
+        </a>
+        <div class="desc">{{ this.name }}</div>
+    </div>
 
 {{/partial}}
 

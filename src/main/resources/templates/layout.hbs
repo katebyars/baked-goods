@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-    <title>{{#block "title"}}BREAD BUYER{{/block}}</title>
-
+    <title>{{#block "title"}}{{/block}}</title>
     <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
     <link rel="stylesheet" href="/app.css">
     <link rel="icon" href="images/bread.png">
 </head>
-<body>
-<center>
+    <body>
+        <div class="container-fluid">
+            <div class="row header">
+                <h1>Image placeholder</h1>
+            </div>
+        <center>
+            <ul class="nav nav-tabs navbar-right navbar-fixed-top">
+                <li role="presentation" class="active"><a href="/">Home</a></li>
+                <li role="presentation"><a href="/buyers/new">Buyer Dash</a></li>
+                <li role="presentation"><a href="/sellers/new">Seller Dash</a></li>
+                <li role="presentation"><a href="/cart">Cart</a></li>
+                <li role="presentation"><a href="/">Welcome {{ currentBuyer.name }}!</a></li>
+            </ul>
 
-<img src="">
-<h1>UNDER CONSTRUCTION</h1>
-
-<br>
-<br>
-<a class="btn btn-primary" href="/home" role="button">HOME</a>
-<a class="btn btn-primary" href="/route/here" role="button">BUY</a>
-<a class="btn btn-primary" href="/sellerportal" role="button">SELL</a>
-
-    <!--<ul class="nav nav-tabs">-->
-        <!--<li role="presentation" class="active"><a href="/">Home</a></li>-->
-        <!--<li role="presentation"><a href="/buyers/new">Buy</a></li>-->
-        <!--<li role="presentation"><a href="/sellers/new">Sell</a></li>-->
-        <!--<li role="presentation"><a href="/cart">My Cart</a></li>-->
-        <!--<li role="presentation"><a href="/">Welcome {{ currentBuyer.name}}!</a></li>-->
-    <!--</ul>-->
-
-<div class="container">
+        <div class="container">
 
 
-    <div class="col-md-12">
-        {{#block "content"}}
-        {{/block}}
+        <div class="col-md-12">
+            {{#block "content"}}
+            {{/block}}
 
+        </div>
     </div>
-</div>
 
-</center>
-{{#block "footer"}}
-    </body>
+    </center>
+    {{#block "footer"}}
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    </html>
+        </body>
+</html>
 {{/block}}
