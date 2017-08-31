@@ -212,12 +212,12 @@ public class App {
         //process a form to update a buyer
         post("/buyers/:id/update", (request, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String newName = request.queryParams("name");
-            String newAddress = request.queryParams("address");
-            String newDietaryPreference = request.queryParams("dietaryPreference");
-            String newEmail = request.queryParams("email");
+            String name = request.queryParams("name");
+            String address = request.queryParams("address");
+            String dietaryPreference = request.queryParams("dietaryPreference");
+            String email = request.queryParams("email");
             int idOfBuyer = Integer.parseInt(request.params("id"));
-            buyerDao.update(idOfBuyer, newName, newAddress, newDietaryPreference, newEmail);
+            buyerDao.update(idOfBuyer, name, address, dietaryPreference, email);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
