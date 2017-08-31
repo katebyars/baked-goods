@@ -33,12 +33,16 @@ public class Sql2oCartDao implements CartDao {
         }
     }
 
-
-    public void addItemsToCart(Items item, Cart cart){
+    public void addItemsToCart(Items item, Cart cart) {
         String query = "INSERT INTO carts_items (itemsId, cartId) VALUES (:itemsId, :cartId)";
-        try(Connection con = sql2o.open()){
+        try (Connection con = sql2o.open()) {
             con.createQuery(query)
                     .addParameter("itemsId", item.getId())
+                    .executeUpdate();
+        } catch (Sql2oException e){
+            System.out.println(e);
+        }
+    }
 
     public void addCartToSeller(Cart cart, Seller seller){
         String query = "INSERT INTO sellers_carts (sellerId, cartId) VALUES (:sellerId, :cartId)";
@@ -107,5 +111,5 @@ public class Sql2oCartDao implements CartDao {
             System.out.println(ex);
         }
     }
-
 }
+
