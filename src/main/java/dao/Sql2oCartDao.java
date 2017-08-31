@@ -38,6 +38,7 @@ public class Sql2oCartDao implements CartDao {
         try (Connection con = sql2o.open()) {
             con.createQuery(query)
                     .addParameter("itemsId", item.getId())
+                    .addParameter("cartId", cart.getId())
                     .executeUpdate();
         } catch (Sql2oException e){
             System.out.println(e);
