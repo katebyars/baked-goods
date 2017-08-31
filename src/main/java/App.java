@@ -166,13 +166,23 @@ public class App {
             return new ModelAndView(model, "newbuyer-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //show buyer dash
+        //show all buyers
         Spark.get("/buyers", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Buyer> allBuyers = buyerDao.getAll();
             model.put("allBuyers", allBuyers);
-            return new ModelAndView(model, "buyerDash.hbs");
+            return new ModelAndView(model, "buyerportal.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //show an individual buyer
+        Spark.get("/buyers/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int buyerId = Integer.parseInt(request.params("id"));
+            Buyer buyer = buyerDao.findById(buyerId);
+            model.put("buyer", buyer);
+            return new ModelAndView(model, "buyer-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
         //process a new buyer form
         post("/buyers/new", (request, response) -> {
@@ -202,12 +212,12 @@ public class App {
         //process a form to update a buyer
         post("/buyers/:id/update", (request, res) -> {
             Map<String, Object> model = new HashMap<>();
-            String newName = request.queryParams("name");
-            String newAddress = request.queryParams("address");
-            String newDietaryPreference = request.queryParams("dietaryPreference");
-            String newEmail = request.queryParams("email");
+            String name = request.queryParams("name");
+            String address = request.queryParams("address");
+            String dietaryPreference = request.queryParams("dietaryPreference");
+            String email = request.queryParams("email");
             int idOfBuyer = Integer.parseInt(request.params("id"));
-            buyerDao.update(idOfBuyer, newName, newAddress, newDietaryPreference, newEmail);
+            buyerDao.update(idOfBuyer, name, address, dietaryPreference, email);
             res.redirect("/");
             return null;
         }, new HandlebarsTemplateEngine());
