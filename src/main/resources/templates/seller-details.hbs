@@ -1,0 +1,37 @@
+{{#partial "content"}}
+
+    <u>Here is your seller profile:</u>
+    <ul>
+        <p> {{seller.name}}</p>
+        <p> {{seller.address}}</p>
+        <p> {{seller.email}}</p>
+        <p> {{seller.dietaryPreference}}</p>
+        <p> {{seller.goodsCategory}}</p>
+    </ul>
+    <hr noshade>
+
+    <ul>
+        {{#if items}}
+            {{#each item}}
+                <li>
+                    <p> {{ name }}</p>
+                    <p> {{ category }}</p>
+
+                    <br>
+                    <a href="/sellerportal/{{seller.id}}/items/{{id}}/update">Edit this team member's information</a><br>
+                    <a href="/sellerportal/{{seller.id}}/items/{{id}}/delete">Remove this member from the team</a>
+                </li>
+                <br>
+            {{/each}}
+        {{else}}
+            <h1>Add Something Special to your Store</h1>
+        {{/if}}
+    </ul>
+
+    <p><a href="/sellerportal/{{seller.id}}/items/new">Add a Salivatingly Scrumptous Creation</a></p>
+    <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
+    <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
+    <hr noshade>
+{{/partial}}
+
+{{> layout.hbs}}
