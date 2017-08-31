@@ -88,6 +88,7 @@ public class Sql2oItemsDao implements ItemsDao {
     @Override
     public void addItemsToCart(Items item, Cart cart){
         String query = "INSERT INTO carts_items (itemsId, cartId) VALUES (:itemsId, :cartId)";
+        //add push operation to cartItems
         try(Connection con = sql2o.open()){
             con.createQuery(query)
                     .addParameter("itemsId", item.getId())
