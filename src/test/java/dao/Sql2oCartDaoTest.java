@@ -87,7 +87,7 @@ public class Sql2oCartDaoTest {
         Items testItem = setUpItem();
         itemsDao.add(testItem);
         itemsDao.addItemsToCart(testItem, testCart);
-        List<Items> newCartItems = new List<>();
+        List<Items> newCartItems = new <>();
         newCartItems.push(testItem);
 
         double resultDouble = testCart.addCartTotal();

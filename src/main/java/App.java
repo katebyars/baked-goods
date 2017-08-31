@@ -10,12 +10,15 @@ import models.Seller;
 import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 import spark.ModelAndView;
+import spark.Spark;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import static spark.Spark.*;
+import static spark.route.HttpMethod.get;
+import static spark.route.HttpMethod.post;
 
 public class App {
 
@@ -118,7 +121,7 @@ public class App {
 //buyer routes
 
         //show a new buyer form
-        get("/buyers/new", (request, response) -> {
+        Spark.get("/buyers/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newbuyer-form.hbs");
         }, new HandlebarsTemplateEngine());
@@ -140,11 +143,22 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //show buyers
-        get("/", (req, res) -> {
+        Spark.get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Buyer> allBuyers = buyerDao.getAll();
             model.put("allBuyers", allBuyers);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+
+        Spark.get("/items", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Items> items = itemsDao.getAllItems();
+            model.put("items", items);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
+     
+
     }
+
 }
