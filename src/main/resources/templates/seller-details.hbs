@@ -22,11 +22,11 @@
                     <br>
                 {{/each}}
             {{else}}
-                <h1>Add Something Special to your Store</h1>
+                <h1>Hello {{ seller.name}} ! Add Something Special to your Store</h1>
             {{/if}}
         </ul>
 
-        <p><a href="/sellerportal/{{seller.id}}/items/new">Add a Salivatingly Scrumptous Creation</a></p>
+        <p><a href="/sellerportal/items/new">New Items</a></p>
         <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
         <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
         <hr noshade>
