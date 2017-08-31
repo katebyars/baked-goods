@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row buffer"></div>
         <div class="row"><h2>Our Makers</h2></div>
-
+        
         <div class="row">
         {{#if allSellers }}
             {{#each allSellers }}
@@ -32,6 +32,17 @@
         {{/if }}
         </div>
     </div>
+
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+    var images = ['bread.png', 'bread2.png', 'baguette.png', 'hotcross.png'];
+
+    $('<img class="fade-in" src="images/' + images[Math.floor(Math.random() * images.length)] + '">').appendTo('.gallery');
+</script>
+
 {{/partial}}
 
 {{> layout.hbs}}
+
+
