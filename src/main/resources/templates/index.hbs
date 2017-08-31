@@ -3,13 +3,26 @@
     {{#if allSellers }}
         {{#each allSellers }}
             <div class="gallery">
-                <a target="/sellers/{{ id }}"><img src="{{ image }}" width="600" height="400"></a>
+                <a target="/sellers/{{ id }}"></a>
                 <div class="desc">{{ name }}</div>
             </div>
         {{/each}}
     {{else}}
         <h2>No sellers have registered stores! Shoot.</h2>
     {{/if }}
+
+
+
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+<script>
+
+    var images = ['bread.png', 'bread2.png', 'baguette.png', 'hotcross.png'];
+
+    $('<img class="fade-in" src="images/' + images[Math.floor(Math.random() * images.length)] + '">').appendTo('.gallery');
+</script>
 {{/partial}}
 
 {{> layout.hbs}}
+
+
