@@ -155,7 +155,7 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-        Spark.get("/items/new", (request, response) -> {
+        Spark.get("/sellerportal/:id/items/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Seller> sellerList = sellerDao.getAll();
             model.put("sellers", sellerList);
@@ -163,7 +163,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
 
-        post("/items/new", (request, response) -> {
+        post("/sellerportal/:id/items/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String category = request.queryParams("category");
