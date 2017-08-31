@@ -36,15 +36,24 @@ public class App {
         sellerDao = new Sql2oSellerDao(sql2o);
         buyerDao = new Sql2oBuyerDao(sql2o);
 
-//delete routes
-
-        Spark.get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            List<Items> allItems = itemsDao.getAllItems();
-            model.put("items", allItems);
+        //index
+        Spark.get("/", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Seller> allSellers = sellerDao.getAll();
+            model.put("allSellers", allSellers);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
-        //delete a seller
+
+        //delete an individual seller
+        //delete all sellers
+        Spark.get("/sellerportal/delete", (request, response) ->{
+            Map<String, Object> model = new HashMap<>();
+            sellerDao.deleteAll();
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //delete an individual cart
+        //delete all carts
 
         //delete a buyer
         Spark.get("/buyers/delete", (req, res) -> {
@@ -62,18 +71,6 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
-
-        ///-------------------------------------///
-        ///..index..///
-
-
-        Spark.get("/home", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            return new ModelAndView(model, "home.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        ///-------------------------------------///
-
         ///..SELLER PORTAL..///
         Spark.get("/sellerportal", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -81,23 +78,9 @@ public class App {
             model.put("sellers", allSellers);
             return new ModelAndView(model, "sellerportal.hbs");
         }, new HandlebarsTemplateEngine());
-        ///-------------------------------------///
-        ///..GET seller DELETE (by id)..///
-//        get("/sellerportal/:id/delete", (request, response) -> {
-//
-//        })
-
-        ///..GET seller DELETE (all)..///
-        Spark.get("/sellerportal/delete", (request, response) ->{
-            Map<String, Object> model = new HashMap<>();
-            sellerDao.deleteAll();
-            return new ModelAndView(model, "success.hbs");
-        }, new HandlebarsTemplateEngine());
-        ///-------------------------------------///
-
 
         ///..GET seller CREATE..///
-        Spark.get("sellerportal/newseller", (request, response) -> {
+        Spark.get("/sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Seller> sellers = sellerDao.getAll();
             model.put("sellers", sellers);
@@ -105,7 +88,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         ///..POST seller CREATE..///
-        post("sellerportal/newseller", (request, response) -> {
+        post("/sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             String name = request.queryParams("name");
             String address = request.queryParams("address");
@@ -114,10 +97,11 @@ public class App {
             String goodsCategory = request.queryParams("goodsCategory");
             Seller newSeller = new Seller(name, address, dietaryPreference, email, goodsCategory);
             sellerDao.add(newSeller);
-            return new ModelAndView(model, "success.hbs");
+            response.redirect("/sellerportal");
+            return null;
         }, new HandlebarsTemplateEngine());
 
-        ///-------------------------------------///
+
         ///..GET seller READ..///
         Spark.get("/sellerportal/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -129,7 +113,6 @@ public class App {
             return new ModelAndView(model, "seller-details.hbs");
         }, new HandlebarsTemplateEngine());
 
-        ///-------------------------------------///
         ///..GET seller UPDATE..///
         Spark.get("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -155,16 +138,30 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+//item routes
+        Spark.get("/items", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Items> items = itemsDao.getAllItems();
+            model.put("items", items);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
 
 //cart routes
 
 //buyer routes
 
         //show a new buyer form
-
         Spark.get("/buyers/new", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             return new ModelAndView(model, "newbuyer-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //show buyer dash
+        Spark.get("/buyers", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Buyer> allBuyers = buyerDao.getAll();
+            model.put("allBuyers", allBuyers);
+            return new ModelAndView(model, "buyerDash.hbs");
         }, new HandlebarsTemplateEngine());
 
         //process a new buyer form
@@ -179,27 +176,10 @@ public class App {
             Buyer buyer = new Buyer(name, address, dietaryPreference, email, cart.getId());
             buyerDao.add(buyer);
             model.put("currentBuyer", buyer);
-            response.redirect("/");
+            response.redirect("/buyers");
             return null;
         }, new HandlebarsTemplateEngine());
 
-        //show buyers
-        Spark.get("/", (req, res) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Buyer> allBuyers = buyerDao.getAll();
-            model.put("allBuyers", allBuyers);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
-
-
-        Spark.get("/items", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            List<Items> items = itemsDao.getAllItems();
-            model.put("items", items);
-            return new ModelAndView(model, "index.hbs");
-        }, new HandlebarsTemplateEngine());
-
-        
         //show a form to update a buyer
         Spark.get("/buyers/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();

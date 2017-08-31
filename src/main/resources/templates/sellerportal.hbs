@@ -1,24 +1,5 @@
 {{#partial "content"}}
 
-    {{#if sellers}}
-
-        {{#each sellers}}
-            <h4><ul> the goodies </ul></h4>
-            <hr noshade>
-            <p> {{name}}</p>
-            <p> {{address}}</p>
-            <p> {{email}}</p>
-            <p> {{dietaryPreference}}</p>
-            <p> {{goodsCategory}}</p>
-            <p><a href="/sellerportal/{{id}}">read more...</a></p>
-            <hr noshade>
-        {{/each}}
-    {{else}}
-        <br>
-        <br><a href=/sellerportal/newseller>CREATE YOUR SELLER</a>
-
-    {{/if}}
-
 {{/partial}}
 
 {{> layout.hbs}}

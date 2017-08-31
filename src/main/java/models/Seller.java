@@ -9,13 +9,22 @@ public class Seller extends User {
     private List<Items> goodsInventory;
     private int id;
     private int cartId;
+    private String image;
 
     public Seller(String name, String address, String dietaryPreference, String email, String goodsCategory) {
         super(name, address, dietaryPreference, email);
         this.goodsCategory = goodsCategory;
         this.id = id;
+        this.image = "/images/placeholder.png";
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getGoodsCategory() {
         return goodsCategory;

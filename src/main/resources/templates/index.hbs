@@ -1,16 +1,15 @@
-
 {{#partial "content"}}
 
     {{#if allSellers }}
-        {{#each allSellters }}
-
-    <div class="gallery">
-        <a target="/sellers/{{ this.id }}" href="bread.png">
-            <img src="/images/{{this.image}}" alt="image name is {{this.image}}" width="600" height="400">
-        </a>
-        <div class="desc">{{ this.name }}</div>
-    </div>
-
+        {{#each allSellers }}
+            <div class="gallery">
+                <a target="/sellers/{{ id }}"><img src="{{ image }}" width="600" height="400"></a>
+                <div class="desc">{{ name }}</div>
+            </div>
+        {{/each}}
+    {{else}}
+        <h2>No sellers have registered stores! Shoot.</h2>
+    {{/if }}
 {{/partial}}
 
 {{> layout.hbs}}

@@ -19,7 +19,7 @@ public class Sql2oSellerDao implements SellerDao {
 
     @Override
     public void add(Seller seller) {
-        String sql = "INSERT INTO sellers (name, address, dietaryPreference, email, goodsCategory) VALUES (:name, :address, :dietaryPreference, :email, :goodsCategory)";
+        String sql = "INSERT INTO sellers (name, address, dietaryPreference, email, goodsCategory, image) VALUES (:name, :address, :dietaryPreference, :email, :goodsCategory, :image)";
         try(Connection con = sql2o.open()){
             int id = (int) con.createQuery(sql)
                     .bind(seller)
@@ -44,7 +44,6 @@ public class Sql2oSellerDao implements SellerDao {
         }
 
     }
-
 
     @Override
     public List<Seller> getAll() {

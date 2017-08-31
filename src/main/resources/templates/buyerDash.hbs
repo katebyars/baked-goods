@@ -1,17 +1,7 @@
 {{#partial "content"}}
-
-    hello
-{{ currentBuyer.cartId }}
-    Welcome {{ currentBuyer.name }} !
-
-    {{#if allCarts}}
-
-        {{#each allCarts}}
-            <h4> the goodies </h4>
-            <hr noshade>
-            <p> {{itemName}}</p>
-            <p><a href="/HANDLER/{{id}}">read more...</a></p>
-            <hr noshade>
+    {{#if allBuyers}}
+        {{#each allBuyers}}
+            <hr noshade><p><a href="/buyers/{{id}}">  <h4> Login to {{ this.name }}'s account: </h4></a></p><hr noshade>
         {{/each}}
     {{else}}
         <br>
