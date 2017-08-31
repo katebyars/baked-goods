@@ -1,0 +1,38 @@
+{#partial "content"}}
+
+{{#if editBuyer}}
+    <h1>Edit your  Profile:</h1>
+    <h1> {{ editBuyer.id }} </h1>
+
+    <form action="/buyers/{{ editBuyer.id }}/update" method="post">
+
+        <label for="name">Edit your name:</label>
+        <input id="name" name="name" type="text" value="{{ editSeller.name}}" placeholder="new seller name" >
+        <br>
+        <label for="address">Edit Address:</label>
+        <input id="address" name="address" type="text" value="{{ editSeller.address}}" placeholder="new address" >
+        <br>
+        <label for="email">Edit Email:</label>
+        <input id="email" name="email" type="text" placeholder="new Email" >
+        <br>
+        <label for="dietaryPreference">Edit your products dietary preference:</label>
+        <input id="dietaryPreference" name="dietaryPreference" type="text" value="{{ editSeller.dietaryPreference}}"placeholder="new dietary preferences" >
+        <br>
+        <label for="goodsCategory">Edit product category:</label>
+        <input id="goodsCategory" name="goodsCategory" type="text" value="{{ editSeller.goodsCategory}}" placeholder="new goods category" >
+        <br>
+        <button type="submit" class="btn btn-default">Edit!</button>
+    </form>
+
+{{else}}
+
+    <h1>Add a new seller profile!</h1>
+
+{{/if}}
+    <br>
+
+</form>
+
+{{/partial}}
+
+{{> layout.hbs}}

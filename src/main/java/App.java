@@ -166,13 +166,23 @@ public class App {
             return new ModelAndView(model, "newbuyer-form.hbs");
         }, new HandlebarsTemplateEngine());
 
-        //show buyer dash
+        //show all buyers
         Spark.get("/buyers", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Buyer> allBuyers = buyerDao.getAll();
             model.put("allBuyers", allBuyers);
-            return new ModelAndView(model, "buyerDash.hbs");
+            return new ModelAndView(model, "buyerportal.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //show an individual buyer
+        Spark.get("/buyers/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int buyerId = Integer.parseInt(request.params("id"));
+            Buyer buyer = buyerDao.findById(buyerId);
+            model.put("buyer", buyer);
+            return new ModelAndView(model, "buyer-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
         //process a new buyer form
         post("/buyers/new", (request, response) -> {
