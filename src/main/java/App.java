@@ -54,9 +54,9 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: delete individual buyer
-        get("/buyers/:id/delete", (req, res) -> {
+        Spark.get("/buyers/:id/delete", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int idOfBuyer = Integer.parseInt(req.params("id"));
+            int idOfBuyer = Integer.parseInt(request.params("id"));
             buyerDao.findById(idOfBuyer);
             buyerDao.deleteById(idOfBuyer);
             return new ModelAndView(model, "index.hbs");
@@ -73,6 +73,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         ///-------------------------------------///
+
         ///..SELLER PORTAL..///
         Spark.get("/sellerportal", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
@@ -93,14 +94,16 @@ public class App {
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
         ///-------------------------------------///
-        ///-------------------------------------///
+
+
         ///..GET seller CREATE..///
         Spark.get("sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Seller> sellers = sellerDao.getAll();
             model.put("sellers", sellers);
-            return new ModelAndView(model, "newseller-form.hbs");
+            return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
+
         ///..POST seller CREATE..///
         post("sellerportal/newseller", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -113,9 +116,10 @@ public class App {
             sellerDao.add(newSeller);
             return new ModelAndView(model, "success.hbs");
         }, new HandlebarsTemplateEngine());
+
         ///-------------------------------------///
         ///..GET seller READ..///
-        get("/sellerportal/:id", (request, response) -> {
+        Spark.get("/sellerportal/:id", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int sellerId = Integer.parseInt(request.params("id"));
             List<Seller> sellers = sellerDao.getAll();
@@ -124,9 +128,10 @@ public class App {
             model.put("seller", foundSeller);
             return new ModelAndView(model, "seller-details.hbs");
         }, new HandlebarsTemplateEngine());
+
         ///-------------------------------------///
         ///..GET seller UPDATE..///
-        get("/sellerportal/:id/update", (request, response) -> {
+        Spark.get("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             int sellerId2 = Integer.parseInt(request.params("id"));
             model.put("editSeller", true);
@@ -134,6 +139,7 @@ public class App {
             model.put("sellers", allSellers);
             return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
+
         ///..POST seller UPDATE..///
         post("/sellerportal/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
@@ -195,7 +201,7 @@ public class App {
 
         
         //show a form to update a buyer
-        get("/buyers/:id/update", (req, res) -> {
+        Spark.get("/buyers/:id/update", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfBuyer = Integer.parseInt(req.params("id"));
             Buyer editBuyer = buyerDao.findById(idOfBuyer);
@@ -217,7 +223,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //get: delete individual buyer
-        get("/buyers/:id/delete", (req, res) -> {
+        Spark.get("/buyers/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfBuyer = Integer.parseInt(req.params("id"));
             buyerDao.findById(idOfBuyer);
