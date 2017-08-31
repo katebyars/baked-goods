@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class Sql2oCartDaoTest {
@@ -77,19 +80,20 @@ public class Sql2oCartDaoTest {
         assertEquals(1, itemsDao.findByCart(testCart.getId()).size());
     }
 
-//    @Test
-//    public void addItemstoCartGetCartTotal_True() throws Exception {
-//        Cart testCart = setUpCart();
-//        cartDao.add(testCart);
-//
-//        Items testItem = setUpItem();
-//        itemsDao.add(testItem);
-//        itemsDao.addItemsToCart(testItem, testCart);
-//        testItem.put(cartItems);
-//        double resultDouble = testCart.addCartTotal();
-//
-//        assertEquals(5.00, resultDouble, .01);
-//    }
+    @Test
+    public void addItemstoCartGetCartTotal_True() throws Exception {
+        Cart testCart = setUpCart();
+        cartDao.add(testCart);
+        Items testItem = setUpItem();
+        itemsDao.add(testItem);
+        itemsDao.addItemsToCart(testItem, testCart);
+        List<Items> newCartItems = new List<>();
+        newCartItems.push(testItem);
+
+        double resultDouble = testCart.addCartTotal();
+
+        assertEquals(5.00, resultDouble, .01);
+    }
 
     @Test
     public void getAllCarts_True() {
