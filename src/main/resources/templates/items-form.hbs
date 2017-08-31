@@ -1,0 +1,66 @@
+{{#partial "content"}}
+
+    {{#if editItem}}
+
+        <div class="well">
+            <h1>Update Your Yummy details:</h1>
+            <form action="/sellerportal/{{editItem.sellerId}}/items/{{editItem.id}}/update" method="post">
+                <div class="form-group">
+                    <label for="sellers">seller:</label>
+                    <select id="sellers" name="sellerId" required>
+                        {{#each sellers}}
+                            <option value="{{this.id}}">{{this.sellerName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class ="form-group">
+                    <label for="itemName">Give your treats a deliciously descriptive name: </label>
+                    <input id="itemName" name="itemName" type="text" class="form-control" value="{{editItem.name}}" required>
+                </div>
+                <div class ="form-group">
+                    <label for="itemCategory">Please categorize your confections: </label>
+                    <input id="itemCategory" name="itemCategory" type="text" class="form-control" value="{{editItem.category}}" required>
+                </div>
+                <div class ="form-group">
+                    <label for="itemPrice">How much will they cost? </label>
+                    <input id="itemPrice" name="itemPrice" type="number" class="form-control" value="{{editItem.price}}" required>
+                </div>
+
+        <button type="submit" class="btn btn-success">Update Item Info</button>
+        </form>
+        </div>
+
+    {{else}}
+
+
+        <div class="well">
+            <h1>Add an absolutely amazing creation </h1>
+            <form action="/items/new" method="post">
+                <div class="form-group">
+                    <label for="sellerId">Shop</label>
+                    <select id="sellerId" name="sellerId" required>
+                        {{#each sellers}}
+                            <option value="{{id}}">{{sellerName}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class ="form-group">
+                    <label for="name">Give your treats a deliciously descriptive name: : </label>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="nom nom" Name required>
+                </div>
+                <div class ="form-group">
+                    <label for="category">Please categorize your confections: </label>
+                    <input id="category" name="category" type="text" class="form-control" placeholder="bread, cake, danish, etc." required>
+                </div>
+                <div class ="form-group">
+                    <label for="itemPrice">How much will they cost? </label>
+                    <input id="itemPrice" name="itemPrice" type="number" class="form-control" value="{{editItem.price}}" required>
+                </div>
+                <button type="submit" class="btn btn-success">Add Treat</button>
+            </form>
+        </div>
+
+    {{/if}}
+{{/partial}}
+
+{{> layout.hbs}}

@@ -155,6 +155,27 @@ public class App {
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
+        Spark.get("/items/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Seller> sellerList = sellerDao.getAll();
+            model.put("sellers", sellerList);
+            return new ModelAndView(model, "items-form.hbs");
+        }, new HandlebarsTemplateEngine());
+
+
+        post("/items/new", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            String name = request.queryParams("name");
+            String category = request.queryParams("category");
+            Double price = Double.parseDouble(request.queryParams("price"));
+            int sellerId = Integer.parseInt(request.queryParams("sellerId"));
+            Items items = new Items(name, category, price);
+            itemsDao.add(items);
+            List<Seller> sellerList = sellerDao.getAll();
+            model.put("sellers", sellerList);
+            return new ModelAndView(model, "index.hbs");
+        }, new HandlebarsTemplateEngine());
+
 
 //cart routes
 
