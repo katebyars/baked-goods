@@ -40,11 +40,14 @@ public class App {
         Spark.get("/", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             List<Seller> allSellers = sellerDao.getAll();
+            List<Items> allItems = itemsDao.getAllItems();
+            model.put("allItems", allItems);
             model.put("allSellers", allSellers);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
         //delete an individual seller
+
         //delete all sellers
         Spark.get("/sellerportal/delete", (request, response) ->{
             Map<String, Object> model = new HashMap<>();
@@ -53,6 +56,7 @@ public class App {
         }, new HandlebarsTemplateEngine());
 
         //delete an individual cart
+
         //delete all carts
 
         //delete a buyer
@@ -107,23 +111,23 @@ public class App {
         //update individual seller
         Spark.get("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int sellerId2 = Integer.parseInt(request.params("id"));
-            model.put("editSeller", true);
-            List<Seller> allSellers = sellerDao.getAll();
-            model.put("sellers", allSellers);
+            int sellerId = Integer.parseInt(request.params("id"));
+            Seller editSeller = sellerDao.findById(sellerId);
+            model.put("editSeller", editSeller);
             return new ModelAndView(model, "seller-form.hbs");
         }, new HandlebarsTemplateEngine());
 
         //process a seller update
         post("/sellerportal/:id/update", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
-            int sellerId = Integer.parseInt(request.queryParams("id"));
-            String newName = request.queryParams("newName");
-            String newAddress = request.queryParams("newAddress");
-            String newEmail = request.queryParams("newEmail");
-            String newDietaryPreference = request.queryParams("newDietaryPreference");
-            String newGoodsCategory = request.queryParams("newGoodsCategory");
-            sellerDao.update(sellerId, newName, newAddress, newEmail, newDietaryPreference, newGoodsCategory);
+            int sellerId = Integer.parseInt(request.params("id"));
+            String name = request.queryParams("name");
+            String address = request.queryParams("address");
+            String email = request.queryParams("email");
+            String dietaryPreference = request.queryParams("dietaryPreference");
+            String goodsCategory = request.queryParams("goodsCategory");
+            Seller editSeller = sellerDao.findById(sellerId);
+            sellerDao.update(sellerId, name, address, dietaryPreference, email, goodsCategory);
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
@@ -149,7 +153,7 @@ public class App {
             Double price = Double.parseDouble(request.queryParams("itemPrice"));
             Items items = new Items(name, category, price);
             itemsDao.add(items);
-            return new ModelAndView(model, "sellerportal.hbs");
+            return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
 
 //cart routes

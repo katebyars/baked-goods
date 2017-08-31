@@ -9,12 +9,11 @@ public class Items {
     private int cartId;
     private int sellerId;
 
-    public Items(String itemName, String itemCategory, double itemPrice, int sellerId) {
+    public Items(String itemName, String itemCategory, double itemPrice) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemPrice = itemPrice;
         this.id = id;
-        this.sellerId = sellerId;
     }
 
     public int getId() {

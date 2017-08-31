@@ -44,3 +44,7 @@ body {
      padding: 15px;
      text-align: center;
  }
+
+ .buffer {
+    height: 100px;
+ }
