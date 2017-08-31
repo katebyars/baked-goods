@@ -153,8 +153,34 @@ public class App {
             Double price = Double.parseDouble(request.queryParams("itemPrice"));
             Items items = new Items(name, category, price);
             itemsDao.add(items);
-            return new ModelAndView(model, "index.hbs");
+            return new ModelAndView(model, "layout.hbs");
         }, new HandlebarsTemplateEngine());
+
+        //show items that a seller can sell and is selling
+        Spark.get("/sellerportal/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int sellerId = Integer.parseInt(request.params("id"));
+            List<Items> forSaleItems = sellerDao.findItemsBySeller(sellerId);
+            List<Items> items = itemsDao.getAllItems();
+            model.put("forSaleItems", forSaleItems);
+            model.put("items", items);
+            return new ModelAndView(model, "seller-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //process a form to add an item to a seller's store
+        post("/sellerportal/:id/sell/:itemId", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            int sellerId = Integer.parseInt(request.params("id"));
+            int itemId = Integer.parseInt(request.params("itemId"));
+            Seller sellerToFind = sellerDao.findById(sellerId);
+            Items itemToFind = itemsDao.findById(itemId);
+            sellerDao.addItemsToSeller(sellerToFind, itemToFind);
+            return new ModelAndView(model, "seller-details.hbs");
+        }, new HandlebarsTemplateEngine());
+
+        //buyer adds item to cart
+        //buyer checks out
+        //purchase arrives at a seller's dash
 
 //cart routes
 
@@ -182,7 +208,6 @@ public class App {
             model.put("buyer", buyer);
             return new ModelAndView(model, "buyer-details.hbs");
         }, new HandlebarsTemplateEngine());
-
 
         //process a new buyer form
         post("/buyers/new", (request, response) -> {
