@@ -1,0 +1,16 @@
+{{#partial "content"}}
+    {{#if allSellers}}
+        {{#each allSellers}}
+           <p><a href="/sellerportal/{{id}}"> <h4> Login to {{ name }}'s account: </h4></a></p><hr noshade>
+        {{/each}}
+        {{else}}
+        <br>
+        <br>
+        <p>No sellers have registered!</p>
+    {{/if}}
+
+    <a href="/sellerportal/newseller"><p>Add a new seller</p></a>
+
+{{/partial}}
+
+{{> layout.hbs}}

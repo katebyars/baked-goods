@@ -1,14 +1,14 @@
 {{#partial "content"}}
-    <div class="row">
-        <div class="col-md-4">
+    <!--<div class="row">
+        <div class="col-md-4">-->
         <ul>
             <p class="left"> {{seller.name}}</p>
             <p class="left"> {{seller.address}}</p>
             <p class="left"> {{seller.email}}</p>
             <p class="left"> {{seller.dietaryPreference}}</p>
             <p class="left"> {{seller.goodsCategory}}</p>
-        </div>
-        <div class="col-md-8">
+        <!--</div>
+        <div class="col-md-8">-->
             {{#if items}}
                 {{#each item}}
                     <li>
@@ -30,8 +30,8 @@
         <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
         <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
         <hr noshade>
-        </div>
-    </div>
+        <!--</div>
+    </div>-->
 {{/partial}}
 
 {{> layout.hbs}}

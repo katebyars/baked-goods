@@ -1,0 +1,15 @@
+{{#partial "content"}}
+    {{#if allBuyers}}
+        {{#each allBuyers}}
+            {{ name }}
+            <hr noshade><p><a href="/buyers/{{id}}">  <h4> Login to {{ name }}'s account: </h4></a></p><hr noshade>
+        {{/each}}
+    {{else}}
+        <br>
+        <br>
+        <p>No BREAD!</p>
+    {{/if}}
+
+{{/partial}}
+
+{{> layout.hbs}}

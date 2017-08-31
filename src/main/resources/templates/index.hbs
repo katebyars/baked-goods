@@ -1,9 +1,8 @@
 {{#partial "content"}}
-    <div class="container-fluid">
-        <div class="row buffer"></div>
-        <div class="row"><h2>Our Makers</h2></div>
-        
-        <div class="row">
+    <hr noshade>
+ <h2>Our Makers</h2>
+<hr noshade>
+    <br>
         {{#if allSellers }}
             {{#each allSellers }}
                 <div class="gallery">
@@ -15,24 +14,25 @@
         {{else}}
             <h2>No sellers have registered stores! Shoot.</h2>
         {{/if }}
-        </div>
 
-        <div class="row buffer"></div>
-        <div class="row"><h2>Shop By Item</h2></div>
+    <hr noshade>
+    <br><h2>Shop By Item</h2>
+    <hr noshade>
+        <div class="row">
+            <br>
+
+        </div>
         <div class="row">
         {{#if allItems }}
             {{#each allItems }}
                 <div class="gallery">
-                    <!--<a target="/items/{{ id }}"><img src="{{ image }}" width="600" height="400"></a>-->
+                    <a target="/items/{{ id }}"><img src="{{ image }}" width="600" height="400"></a>
                     <div class="desc">{{ itemName }}</div>
                 </div>
             {{/each}}
         {{else}}
-            <h2>No items to display to display</h2>
+            <h2>No items to display!</h2>
         {{/if }}
-        </div>
-    </div>
-
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
 <script>
