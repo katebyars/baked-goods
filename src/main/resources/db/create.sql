@@ -4,9 +4,8 @@ CREATE TABLE IF NOT EXISTS items (
  id int PRIMARY KEY auto_increment,
  itemName VARCHAR,
  itemCategory VARCHAR,
- itemPrice DOUBLE,
- sellerId INTEGER
-);
+ itemPrice DOUBLE
+ );
 
 CREATE TABLE IF NOT EXISTS carts (
  id int PRIMARY KEY auto_increment,
@@ -27,7 +26,7 @@ CREATE TABLE IF NOT EXISTS sellers (
  address VARCHAR,
  dietaryPreference VARCHAR,
  email VARCHAR,
- goodsCategory VARCHAR,
+ goodsCategory VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS buyers (
