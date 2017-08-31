@@ -1,24 +1,16 @@
 {{#partial "content"}}
+    {{#if allSellers}}
+        {{#each allSellers}}
+           <p><a href="/sellerportal/{{id}}"> <h4> Login to {{ name }}'s account: </h4></a></p><hr noshade>
+        {{/each}}
+        {{else}}
+        <br>
+        <br>
+        <p>No sellers have registered!</p>
+    {{/if}}
+
+    <a href="/sellerportal/newseller"><p>Add a new seller</p></a>
 
 {{/partial}}
 
 {{> layout.hbs}}
-
-
-<!--{{#partial "content"}}-->
-
-
-    <!--<u>Here is your seller profile:</u>-->
-    <!--<ul>-->
-        <!--<p> {{seller.name}}</p>-->
-        <!--<p> {{seller.address}}</p>-->
-        <!--<p> {{seller.email}}</p>-->
-        <!--<p> {{seller.dietaryPreference}}</p>-->
-        <!--<p> {{seller.goodsCategory}}</p>-->
-    <!--</ul>-->
-    <!--<hr noshade>-->
-
-    <!--<p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>-->
-    <!--<p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>-->
-    <!--<hr noshade>-->
-<!--{{/partial}}-->

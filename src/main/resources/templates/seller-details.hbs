@@ -1,37 +1,37 @@
 {{#partial "content"}}
+    <div class="row">
+        <div class="col-md-4">
+        <ul>
+            <p class="left"> {{seller.name}}</p>
+            <p class="left"> {{seller.address}}</p>
+            <p class="left"> {{seller.email}}</p>
+            <p class="left"> {{seller.dietaryPreference}}</p>
+            <p class="left"> {{seller.goodsCategory}}</p>
+        </div>
+        <div class="col-md-8">
+            {{#if items}}
+                {{#each item}}
+                    <li>
+                        <p> {{ name }}</p>
+                        <p> {{ category }}</p>
 
-    <u>Here is your seller profile:</u>
-    <ul>
-        <p> {{seller.name}}</p>
-        <p> {{seller.address}}</p>
-        <p> {{seller.email}}</p>
-        <p> {{seller.dietaryPreference}}</p>
-        <p> {{seller.goodsCategory}}</p>
-    </ul>
-    <hr noshade>
-
-    <ul>
-        {{#if items}}
-            {{#each item}}
-                <li>
-                    <p> {{ name }}</p>
-                    <p> {{ category }}</p>
-
+                        <br>
+                        <a href="/sellerportal/{{seller.id}}/items/{{id}}/update">Edit this team member's information</a><br>
+                        <a href="/sellerportal/{{seller.id}}/items/{{id}}/delete">Remove this member from the team</a>
+                    </li>
                     <br>
-                    <a href="/sellerportal/{{seller.id}}/items/{{id}}/update">Edit this team member's information</a><br>
-                    <a href="/sellerportal/{{seller.id}}/items/{{id}}/delete">Remove this member from the team</a>
-                </li>
-                <br>
-            {{/each}}
-        {{else}}
-            <h1>Add Something Special to your Store</h1>
-        {{/if}}
-    </ul>
+                {{/each}}
+            {{else}}
+                <h1>Add Something Special to your Store</h1>
+            {{/if}}
+        </ul>
 
-    <p><a href="/sellerportal/{{seller.id}}/items/new">Add a Salivatingly Scrumptous Creation</a></p>
-    <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
-    <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
-    <hr noshade>
+        <p><a href="/sellerportal/{{seller.id}}/items/new">Add a Salivatingly Scrumptous Creation</a></p>
+        <p><a href="/sellerportal/{{seller.id}}/update">Edit this profile</a></p>
+        <p><a href="/sellerportal/{{seller.id}}/delete">DELETE this profile (no undo)</a></p>
+        <hr noshade>
+        </div>
+    </div>
 {{/partial}}
 
 {{> layout.hbs}}

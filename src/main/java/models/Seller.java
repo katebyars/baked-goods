@@ -15,7 +15,6 @@ public class Seller extends User {
         super(name, address, dietaryPreference, email);
         this.goodsCategory = goodsCategory;
         this.id = id;
-        this.image = "/images/placeholder.png";
     }
 
     public String getImage() {

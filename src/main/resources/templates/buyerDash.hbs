@@ -1,7 +1,8 @@
 {{#partial "content"}}
     {{#if allBuyers}}
         {{#each allBuyers}}
-            <hr noshade><p><a href="/buyers/{{id}}">  <h4> Login to {{ this.name }}'s account: </h4></a></p><hr noshade>
+            {{ name }}
+            <hr noshade><p><a href="/buyers/{{id}}">  <h4> Login to {{ name }}'s account: </h4></a></p><hr noshade>
         {{/each}}
     {{else}}
         <br>

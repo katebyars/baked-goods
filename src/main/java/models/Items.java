@@ -7,12 +7,14 @@ public class Items {
     private double itemPrice;
     private int id;
     private int cartId;
+    private int sellerId;
 
-    public Items(String itemName, String itemCategory, double itemPrice) {
+    public Items(String itemName, String itemCategory, double itemPrice, int sellerId) {
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemPrice = itemPrice;
         this.id = id;
+        this.sellerId = sellerId;
     }
 
     public int getId() {
